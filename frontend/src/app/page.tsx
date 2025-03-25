@@ -1,5 +1,6 @@
 import MainMenuComponents from "@/components/MainMenuComponents";
 import SearchComponent from "@/components/SearchComponent";
+import SummaryCardComponents from "@/components/SummaryCardComponents";
 import { FaStore } from "react-icons/fa";
 import { FcSalesPerformance } from "react-icons/fc";
 import { IoPeopleSharp } from "react-icons/io5";
@@ -14,15 +15,22 @@ export default function Home() {
           <div className="">
             <h1 className="text-3xl mb-5">Dashboard</h1>
             <SearchComponent />
-            <MainMenuComponents menuName="Inventory" icon={<FaStore/>} />
+            <MainMenuComponents menuName="Inventory" icon={<FaStore />} />
             <MainMenuComponents menuName="Customer" icon={<IoPeopleSharp />} />
-            <MainMenuComponents menuName="Sales" icon={<FcSalesPerformance/>} />
-            <MainMenuComponents menuName="Analytics" icon={<SiGoogleanalytics/>} />
-            <MainMenuComponents menuName="Report" icon={<TbReportAnalytics/>} />
+            <MainMenuComponents menuName="Sales" icon={<FcSalesPerformance />} />
+            <MainMenuComponents menuName="Analytics" icon={<SiGoogleanalytics />} />
+            <MainMenuComponents menuName="Report" icon={<TbReportAnalytics />} />
           </div>
 
         </div>
-        <div className="w-[82vw] h-[95vh] bg-gray-200 rounded-4xl m-3"></div>
+        <div className="w-[82vw] h-[95vh] bg-gray-100 rounded-4xl m-3 p-4">
+          <div className="flex justify-evenly items-center">
+            <SummaryCardComponents title="Total Sales" icon={<FcSalesPerformance />} total="12,000" comparison="+12 from last month" />
+            <SummaryCardComponents title="Total Sales" icon={<FcSalesPerformance />} total="12,000" comparison="+12 from last month" />
+            <SummaryCardComponents title="Total Sales" icon={<FcSalesPerformance />} total="12,000" comparison="+12 from last month" />
+            <SummaryCardComponents title="Total Sales" icon={<FcSalesPerformance />} total="12,000" comparison="+12 from last month" />
+          </div>
+        </div>
       </div>
     </div>
   );
