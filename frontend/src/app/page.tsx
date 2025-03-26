@@ -1,6 +1,7 @@
 import MainMenuComponents from "@/components/MainMenuComponents";
 import SearchComponent from "@/components/SearchComponent";
 import SummaryCardComponents from "@/components/SummaryCardComponents";
+import { Component } from "@/components/test";
 import { FaStore } from "react-icons/fa";
 import { FcSalesPerformance } from "react-icons/fc";
 import { IoPeopleSharp } from "react-icons/io5";
@@ -29,6 +30,10 @@ export default function Home() {
             <SummaryCardComponents title="Total Sales" icon={<FcSalesPerformance />} total="12,000" comparison="+12 from last month" />
             <SummaryCardComponents title="Total Sales" icon={<FcSalesPerformance />} total="12,000" comparison="+12 from last month" />
             <SummaryCardComponents title="Total Sales" icon={<FcSalesPerformance />} total="12,000" comparison="+12 from last month" />
+          </div>
+          <div className="flex justify-center">
+          <Component/>
+          <Component/>
           </div>
         </div>
       </div>
