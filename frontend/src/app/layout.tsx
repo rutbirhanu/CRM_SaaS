@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import SearchComponent from "@/components/SearchComponent";
+import MainMenuComponents from "@/components/MainMenuComponents";
+import { FaStore } from "react-icons/fa";
+import { FcSalesPerformance } from "react-icons/fc";
+import { IoPeopleSharp } from "react-icons/io5";
+import { SiGoogleanalytics } from "react-icons/si";
+import { TbReportAnalytics } from "react-icons/tb";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +34,27 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="bg-gray-950 h-dvh w-full text-white ">
+          <div className="flex ">
+            <div className="w-[13vw] my-7 m-5 break-words">
+              <div className="">
+                <h1 className="text-3xl mb-5">Dashboard</h1>
+                <SearchComponent />
+                <MainMenuComponents menuName="Inventory" icon={<FaStore />} />
+                <MainMenuComponents menuName="Customer" icon={<IoPeopleSharp />} />
+                <MainMenuComponents menuName="Sales" icon={<FcSalesPerformance />} />
+                <MainMenuComponents menuName="Analytics" icon={<SiGoogleanalytics />} />
+                <MainMenuComponents menuName="Report" icon={<TbReportAnalytics />} />
+              </div>
+
+            </div>
+
+            <div className="w-[84vw] h-[96vh] bg-gray-100 rounded-3xl mx-3 mt-3 mb-2 p-4 overflow-auto">
+              {children}
+            </div>
+          </div>
+        </div>
+
       </body>
     </html>
   );
