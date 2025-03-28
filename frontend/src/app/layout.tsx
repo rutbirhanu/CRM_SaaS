@@ -22,7 +22,7 @@ const geistMono = Geist_Mono({
 
 
 const poppins = Poppins({
-    weight:"300"
+  weight: "300"
 })
 
 
@@ -45,18 +45,18 @@ export default function RootLayout({
           <div className="flex ">
             <div className="w-[14vw] my-7 mx-5 break-words flext flex-col items-start">
               <div className="">
-              <div className={`text-[27px] mb-8 font-bold ${poppins.className}`}>Dashboard</div>
+                <div className={`text-[27px] mb-8 font-bold ${poppins.className}`}>Dashboard</div>
                 <SearchComponent />
-                <MainMenuComponents menuName="Inventory" icon={<FaStore />} />
-                <MainMenuComponents menuName="Customer" icon={<IoPeopleSharp />} />
-                <MainMenuComponents menuName="Sales Analytics" icon={<FcSalesPerformance />} />
-                <MainMenuComponents menuName="Social Media" icon={<SiGoogleanalytics />} />
-                <MainMenuComponents menuName="Marketing" icon={<TbReportAnalytics />} />
+                <MainMenuComponents menuName="Inventory" icon={<FaStore />} itemroute="/inventory" />
+                <MainMenuComponents menuName="Customer" icon={<IoPeopleSharp />} itemroute="customers" />
+                <MainMenuComponents menuName="Sales Analytics" icon={<FcSalesPerformance />} itemroute="sales_analytics" />
+                <MainMenuComponents menuName="Social Media" icon={<SiGoogleanalytics />} itemroute="social_medias" />
+                <MainMenuComponents menuName="Loyality Program" icon={<TbReportAnalytics />} itemroute="loyality_program" />
               </div>
 
             </div>
 
-            <div className="w-[83vw] h-[96vh] bg-gray-100 rounded-3xl mx-3 mt-3 mb-2 p-4 overflow-auto">
+            <div className="w-[83vw] h-[96vh] bg-gray-100 rounded-3xl mx-3 mt-3 mb-2 p-4 overflow-auto text-black">
               {children}
             </div>
           </div>
