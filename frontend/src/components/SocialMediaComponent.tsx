@@ -13,7 +13,7 @@ const getBackgroundColor = (mediaName: string) => {
     Instagram: "bg-[linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)] text-white", // Instagram Gradient
     TikTok: "bg-black text-white", // TikTok Black
     Twitter: "bg-blue-400", // Twitter Blue
-    YouTube: "bg-red-600", // YouTube Red
+    YouTube: "bg-red-600 text-white", // YouTube Red
   };
 
   return colors[mediaName] || "bg-gray-200"; // Default background
