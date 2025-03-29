@@ -1,3 +1,4 @@
+import { BarChartComponent } from '@/components/BarChartComponent'
 import { PieChartComponent } from '@/components/PieChartComponent'
 import SocialMediaComponent from '@/components/SocialMediaComponent'
 import React from 'react'
@@ -18,11 +19,13 @@ const Page = () => {
         </div>
       </div>
 
-      <div className='flex border-2 justify-evenly border-gray-200 rounded-2xl items-center p-5 mt-10 bg-white'>
-        <PieChartComponent />
+      <div className='flex border-2 flex-col justify-evenly border-gray-200 rounded-2xl items-center p-5 mt-10 bg-white'>
+        <div className='flex w-full justify-evenly'>
+          <PieChartComponent />
+          <BarChartComponent />
+        </div>
 
-
-        <div className="bg-gradient-to-r from-teal-950 to-blue-950 p-6 rounded-lg shadow-lg border border-gray-200">
+        <div className="bg-gradient-to-r from-teal-950 to-blue-950 p-6 rounded-lg shadow-lg border border-gray-200 mt-7">
           <h2 className="text-[18px] font-bold text-white mb-6">
             <span className="mr-3 inline-block">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4 inline-block text-yellow-400">

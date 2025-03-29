@@ -19,12 +19,12 @@ function Page() {
       <p className='text-[20px] font-semibold'>Sold Items</p>
       <SummaryCardComponents title='Total items Sold' total='12,000' icon={<IoBagCheckOutline />} comparison='+100 items from yesterday' />
 
-      <div className='flex justify-evenly mt-6'>
+      <div className='flex justify-between mt-6 bg-gradient-to-r from-blue-50 to-blue-100'>
 
-        <div className='overflow-auto max-h-[340px]'>
-          <table className='w-[55vw] border-collapse border border-gray-200 bg-white rounded-2xl text-[14px] shadow'>
+        <div className='overflow-auto max-h-[340px] rounded-2xl'>
+          <table className='w-[55vw] border-collapse border border-gray-200 bg-white rounded-2xl text-[14px] shadow mr-3'>
             <thead>
-              <tr>
+              <tr className='bg-gray-200 rounded-2xl'>
                 <th className=' border border-gray-300 px-3 py-2'>Item Name</th>
                 <th className=' border border-gray-300 px-3 py-2'>Quantity</th>
                 <th className=' border border-gray-300 px-3 py-2'>Price</th>
