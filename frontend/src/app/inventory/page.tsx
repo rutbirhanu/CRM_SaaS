@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React from 'react'
 
 function Page() {
@@ -6,39 +7,38 @@ function Page() {
       <p className='text-[20px] font-semibold'>Inventory</p>
       <div>
 
-
         <div className="overflow-x-auto bg-gray-100 p-4">
-          <table className="table-auto min-w-full ">
+          <table className="table-auto min-w-full text-[15px]">
             <thead>
               <tr className='bg-gray-300 border-[1px] text-left rounded-2xl'>
-                <th className="px-4 py-2"></th>
-                <th className="px-4 py-2">Image</th>
-                <th className="px-4 py-2">Item</th>
-                <th className="px-4 py-2">Quantity</th>
-                <th className="px-4 py-2">Price</th>
+                <th className="px-4 py-1"></th>
+                <th className="px-4 py-1">Image</th>
+                <th className="px-4 py-1">Item</th>
+                <th className="px-4 py-1">Quantity</th>
+                <th className="px-4 py-1">Price</th>
               </tr>
             </thead>
             <tbody>
-              <tr className='border-b-[2px]'>
-                <td className="px-4 py-2"><input type="checkbox" /></td>
-                <td className="px-4 py-2"><img src="https://via.placeholder.com/50" alt="Product Image" className="w-12 h-12 object-cover" /></td>
-                <td className="px-4 py-2">Product Name 1</td>
-                <td className="px-4 py-2">1</td>
-                <td className="px-4 py-2">$10.00</td>
+              <tr className='border-b-[2px] '>
+                <td className="px-4 py-1"><input type="checkbox" /></td>
+                <td className="px-4 py-1"><Image src="https://eu.christianlouboutin.com/media/catalog/product/3/1/3180466f065-3180466f065-main_image-ecommerce-christianlouboutin-folliesstrass-3180466_f065_1_1200x1200.jpg" alt="Product Image" width={43} height={43} className="border-[1px] shadow" /></td>
+                <td className="px-4 py-1 text-[14px]">Product Name 1</td>
+                <td className="px-4 py-1 text-[14px]">1</td>
+                <td className="px-4 py-1 text-[14px]">$10.00</td>
               </tr>
               <tr className='border-b-[2px]'>
-                <td className="px-4 py-2"><input type="checkbox" /></td>
-                <td className="px-4 py-2"><img src="https://via.placeholder.com/50" alt="Product Image" className="w-12 h-12 object-cover" /></td>
-                <td className="px-4 py-2">Product Name 2</td>
-                <td className="px-4 py-2">2</td>
-                <td className="px-4 py-2">$20.00</td>
+                <td className="px-4 py-1"><input type="checkbox" /></td>
+                <td className="px-4 py-1"><Image src="https://us.christianlouboutin.com/media/catalog/product/1/2/1250521r558-1250521r558-main_image-ecommerce-christianlouboutin-sokate-1250521_r558_1_1200x1200.jpg" alt="Product Image" width={43} height={43} className="border-[1px] shadow" /></td>
+                <td className="px-4 py-1 text-[14px]">Product Name 2</td>
+                <td className="px-4 py-1 text-[14px]">2</td>
+                <td className="px-4 py-1 text-[14px]">$20.00</td>
               </tr>
               <tr className='border-b-[2px]'>
-                <td className="px-4 py-2"><input type="checkbox" /></td>
-                <td className="px-4 py-2"><img src="https://via.placeholder.com/50" alt="Product Image" className="w-12 h-12 object-cover" /></td>
-                <td className="px-4 py-2">Product Name 3</td>
-                <td className="px-4 py-2">1</td>
-                <td className="px-4 py-2">$15.00</td>
+                <td className="px-4 py-1"><input type="checkbox" /></td>
+                <td className="px-4 py-1"><Image src="https://eu.christianlouboutin.com/media/catalog/product/cache/2687d9ba4029f1eb6acb91746b133704/3/2/3220303b439-3220303b439-main_image-ecommerce-christianlouboutin-hotchicksling-3220303_b439_1_1200x1200.jpg" width={43} height={43} alt="Product Image" className="border-[1px] shadow" /></td>
+                <td className="px-4 py-1 text-[14px]">Product Name 3</td>
+                <td className="px-4 py-1 text-[14px]">1</td>
+                <td className="px-4 py-1 text-[14px]">$15.00</td>
               </tr>
             </tbody>
           </table>

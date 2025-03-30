@@ -22,7 +22,7 @@ const geistMono = Geist_Mono({
 
 
 const poppins = Poppins({
-  weight: "300"
+  weight: "400"
 })
 
 
@@ -56,7 +56,7 @@ export default function RootLayout({
 
             </div>
 
-            <div className="w-[83vw] h-[96vh] bg-gray-100 rounded-3xl mx-3 mt-3 mb-2 p-4 overflow-auto text-black">
+            <div className={`w-[83vw] h-[96vh] bg-gray-100 rounded-3xl mx-3 mt-3 mb-2 p-4 overflow-auto text-black ${poppins.className}`}>
               {children}
             </div>
           </div>
