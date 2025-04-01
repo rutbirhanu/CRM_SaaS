@@ -1,19 +1,30 @@
 import FilterCardComponent from '@/components/FilterCardComponent'
+import InventoryWarningCard from '@/components/InventoryWarningCard'
 import Image from 'next/image'
 import React from 'react'
 
 function Page() {
   return (
     <div>
-      <p className='text-[20px] font-semibold'>Inventory</p>
-      <div className='flex justify-center gap-5 my-2'>
+      <p className='text-[20px] font-semibold mb-[25px]'>Inventory</p>
+      <div className='border-[1px] shadow bg-white p-4 rounded-2xl mb-10'>
+      <p className='text-[13px] font-medium text-red-600'>Inventory Items to be RESTOKED (item no less than 10)</p>
+      <div className='flex mt-5  gap-5'>
+        <InventoryWarningCard />
+        <InventoryWarningCard />
+        <InventoryWarningCard />
+        <InventoryWarningCard />
+      </div>
+      </div>
+      
+      <div className='flex justify-end gap-5 my-1 mt-6'>
         <FilterCardComponent />
         <FilterCardComponent />
         <FilterCardComponent />
       </div>
-      <div>
-        <div className="overflow-x-auto bg-gray-100 p-4">
-          <table className="table-auto min-w-full text-[15px]">
+      <div >
+        <div className="overflow-x-auto  p-4">
+          <table className="table-auto min-w-full bg-white rounded-2xl text-[15px]">
             <thead>
               <tr className='bg-gray-300 border-[1px] text-left rounded-2xl'>
                 <th className="px-4 py-1"></th>
