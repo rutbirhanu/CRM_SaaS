@@ -1,4 +1,5 @@
 import React from 'react';
+import { signIn } from '../../../auth';
 
 const Login: React.FC = () => {
     return (
@@ -17,9 +18,19 @@ const Login: React.FC = () => {
                         <input type="password" id="password" name="password" className="w-full bg-gray-100 rounded-lg p-3 shadow-inset" />
                     </div>
                     <div className='flex justify-center'>
-                        <button type="submit" className="w-1/2 bg-blue-500 text-white text-center rounded-lg px-4 py-2 mt-4">
-                            Sign In
-                        </button>
+                        <form action={
+                            async () => {
+                                'use server'
+                                await signIn()
+                            }
+
+                        }>
+
+                            <button type="submit" className="w-1/2 bg-blue-500 text-white text-center rounded-lg px-4 py-2 mt-4">
+                                Sign In
+                            </button>
+                        </form>
+
                     </div>
                 </form>
 
@@ -29,9 +40,16 @@ const Login: React.FC = () => {
                     <div className="border-t border-gray-300 w-1/4"></div>
                 </div>
 
-                <button className="w-1/2 bg-red-500 text-white rounded-lg px-4 py-2">
-                    Sign in with Google
-                </button>
+                <form action={
+                    async () => {
+                        'use server'
+                        await signIn('google')
+                    }
+                }>
+                    <button className="w-1/2 bg-red-500 text-white rounded-lg px-4 py-2">
+                        Sign in with Google
+                    </button>
+                </form>
             </div>
         </div>
     );
