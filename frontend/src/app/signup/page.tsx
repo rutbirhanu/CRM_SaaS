@@ -28,41 +28,52 @@ const SignupPage = () => {
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md bg-white shadow-2xl border border-gray-300 py-6 px-10 rounded-2xl relative">
         <h2 className="text-black text-center text-2xl font-semibold">Sign Up</h2>
-        <form onSubmit={handleSignUp} className="space-y-6 mt-6" >
+        <form onSubmit={handleSignUp} className="space-y-4 mt-6" >
           <div>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
             <input
+              id="name"
               type="text"
               name="name"
               onChange={handleSetFormData}
-              placeholder="Full Name"
-              className="w-full py-1 px-3 rounded-lg bg-gray-200 border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 shadow-inner"
+              // placeholder="Full Name"
+              className="w-full py-1 px-3 rounded-lg bg-gray-50 border-[1px] border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 shadow-inner"
             />
           </div>
           <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
             <input
+              id="email"
               type="email"
               name="email"
               onChange={handleSetFormData}
-              placeholder="Email Address"
-              className="w-full py-1 px-3 rounded-lg bg-gray-200 border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 shadow-inner"
+              // placeholder="Email Address"
+              className="w-full py-1 px-3 rounded-lg bg-gray-50 border-[1px] border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 shadow-inner"
+
             />
           </div>
           <div>
+            <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
             <input
+              id="phone"
               type="text"
               name="phone"
               onChange={handleSetFormData}
-              placeholder="Phone Number"
-              className="w-full py-1 px-3 rounded-lg bg-gray-200 border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 shadow-inner"
+              // placeholder="Phone Number"
+              className="w-full py-1 px-3 rounded-lg bg-gray-50 border-[1px] border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 shadow-inner"
+
             />
           </div>
           <div>
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">Password</label>
             <input
+              id="password"
               type="password"
               name="password"
               onChange={handleSetFormData}
-              placeholder="Password"
-              className="w-full py-1 px-3 rounded-lg bg-gray-200 border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 shadow-inner"
+              // placeholder="Password"
+              className="w-full py-1 px-3 rounded-lg bg-gray-50 border-[1px] border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 shadow-inner"
+
             />
           </div>
           <div className="flex justify-center">
