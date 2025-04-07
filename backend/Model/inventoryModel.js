@@ -4,10 +4,6 @@ const InventorySchema = new mongoose.Schema({
     price: { type: Number, required: true },
     stock: { type: Number, required: true },
     category: { type: String },
-    supplier: {
-      name: { type: String },
-      contact: { type: String }
-    },
     addedAt: { type: Date, default: Date.now }
   });
   
