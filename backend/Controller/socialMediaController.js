@@ -1,15 +1,17 @@
 const oauth2Client = require("../Config/youtubeOauthConfig")
 // import axios from 'axios';
 require("dotenv").config();
-
+const { google } = require("googleapis");
 const BASE_INSTAGRAM_URL = 'https://graph.instagram.com';
 const BASE_FACEBOOK_URL = 'https://graph.facebook.com/v12.0';
 const ACCESS_TOKEN = process.env.META_TOKEN;
 
+const CLIENT_ID = process.env.CLIENT_ID;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
+const REDIRECT_URI = process.env.REDIRECT_URI;
+const REFRESH_TOKEN = process.env.REFRESH_TOKEN;
 
 
-
-// YOUTUBE ANALYTICS
 
 const generateUrl = async (req, res) => {
   try {
@@ -47,6 +49,30 @@ const generateToken = async (req, res) => {
   }
 }
 
+
+
+// Function to get analytics data
+async function getYouTubeAnalytics() {
+  try {
+    const oauth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
+    oauth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
+
+    const youtubeAnalytics = google.youtubeAnalytics({ version: "v2", auth: oauth2Client });
+
+    const response = await youtubeAnalytics.reports.query({
+      ids: "channel==MINE",
+      startDate: "2022-01-01",
+      endDate: "2024-04-10",
+      metrics: "views,likes,comments,shares,estimatedMinutesWatched",
+      dimensions: "day",
+      sort: "day"
+    });
+
+    console.log("YouTube Analytics Data:", response.data);
+  } catch (error) {
+    console.error("Error fetching analytics:", error);
+  }
+}
 
 
 
@@ -110,4 +136,4 @@ const generateToken = async (req, res) => {
 
 
 
-module.exports = { generateToken, generateUrl }
+module.exports = { generateToken, generateUrl, getYouTubeAnalytics }
