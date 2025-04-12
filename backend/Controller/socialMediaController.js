@@ -63,7 +63,7 @@ async function getYouTubeAnalytics() {
       ids: "channel==MINE",
       startDate: "2022-01-01",
       endDate: "2024-04-10",
-      metrics: "views,likes,comments,shares,estimatedMinutesWatched",
+      metrics: "views,subscribersGained,subscribersLost,shares",
       dimensions: "day",
       sort: "day"
     });
