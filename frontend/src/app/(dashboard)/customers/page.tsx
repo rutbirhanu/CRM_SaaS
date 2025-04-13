@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"; // Assuming you're using ShadCN's Button component
+import Link from "next/link";
 
 const AdminCustomerPage = () => {
   const customers = [
@@ -26,12 +27,14 @@ const AdminCustomerPage = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
+    <div className="flex flex-col items-center justify-center h-full">
       <div className="w-full ">
         {/* Header Section */}
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-2xl font-semibold text-gray-900">Customer List</h2>
-          <Button className="bg-blue-600 hover:bg-blue-700 text-white">Add Customer</Button>
+          <Link href="/customers/add-customer">
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white">Add Customer</Button>
+          </Link>
         </div>
 
         {/* Customers Table */}

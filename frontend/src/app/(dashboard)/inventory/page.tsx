@@ -1,22 +1,29 @@
 import FilterCardComponent from '@/components/FilterCardComponent'
 import InventoryWarningCard from '@/components/InventoryWarningCard'
+import { Button } from '@/components/ui/button'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 function Page() {
   return (
     <div>
-      <p className='text-[20px] font-semibold mb-[25px]'>Inventory</p>
-      <div className='border-[1px] shadow bg-white p-4 rounded-2xl mb-10'>
-      <p className='text-[13px] font-medium text-red-600'>Inventory Items to be RESTOKED (item no less than 10)</p>
-      <div className='flex mt-5  gap-5'>
-        <InventoryWarningCard />
-        <InventoryWarningCard />
-        <InventoryWarningCard />
-        <InventoryWarningCard />
+      <div className="flex justify-between items-center my-7 mx-5">
+        <h2 className="text-2xl font-semibold text-gray-900">Inventory</h2>
+        <Link href="/inventory/add-item">
+          <Button className="bg-blue-600 hover:bg-blue-700 text-white">Add Item</Button>
+        </Link>
       </div>
+      <div className='border-[1px] shadow bg-white p-4 rounded-2xl mb-10 mt-4'>
+        <p className='text-[13px] font-medium text-red-600'>Inventory Items to be RESTOKED (item no less than 10)</p>
+        <div className='flex mt-5  gap-5'>
+          <InventoryWarningCard />
+          <InventoryWarningCard />
+          <InventoryWarningCard />
+          <InventoryWarningCard />
+        </div>
       </div>
-      
+
       <div className='flex justify-end gap-5 my-1 mt-6'>
         <FilterCardComponent />
         <FilterCardComponent />
