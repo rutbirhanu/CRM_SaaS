@@ -59,13 +59,23 @@ export default function Page() {
             <form onSubmit={handleAddItem} className="space-y-4">
               {/* Image Upload */}
               <div>
-                <label className="block text-sm font-medium mb-1">Item Image</label>
-                <input
-                  type="file"
-                  name="image"
-                  onChange={handleFileChange}
-                  className="w-full py-2 px-4 border rounded-lg bg-gray-50 focus:ring-2 focus:ring-gray-200"
-                />
+                <label className="block text-sm font-medium mb-2 text-gray-700">Item Image</label>
+
+                <div className="relative">
+                  <input
+                    type="file"
+                    name="image"
+                    onChange={handleFileChange}
+                    className="file:mr-4 file:py-[7px] file:px-4 
+                     file:text-sm file:font-medium
+                     file:rounded-[3px]
+                   file:text-gray-700
+                     file:shadow-[2px_2px_8px_#d1d9e6,inset_-2px_-2px_8px_#ffffff]
+                     cursor-pointer
+                     text-gray-600 py-[5px] px-2 border rounded-lg w-full  bg-gray-50 focus:ring-2 focus:ring-gray-200 text-[14px]"
+                  />
+                </div>
+
               </div>
 
               {/* Item Name */}
