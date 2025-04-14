@@ -21,10 +21,10 @@ const getBackgroundColor = (mediaName: string) => {
 
 function SocialMediaComponent({icon, mediaName, followers}: SocialMediaComponentType) {
   return (
-    <div className={` py-5 px-9 m-2 flex flex-col shadow-2xl rounded-2xl w-fit  ${getBackgroundColor(mediaName)} `}>
+    <div className={` py-4 px-7 m-2 flex flex-col shadow-2xl rounded-2xl w-fit  ${getBackgroundColor(mediaName)} `}>
       <span >{icon}</span>
-      <p className="text-[15px] mb-4 font-media">{mediaName}</p>
-      <p className="font-medium text-[18px]">{followers}</p>
+      <p className="text-[14px] mb-4 font-media">{mediaName}</p>
+      <p className="font-medium text-[17px]">{followers}</p>
       <p className="font-medium text-[13px]">Followers</p>
 
     </div>

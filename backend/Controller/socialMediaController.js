@@ -105,35 +105,29 @@ async function getYouTubeAnalytics() {
 
 
 
+//GET INSTAGRAM FOLLOWER COUNT
 
+// const axios = require('axios');
 
-// // INSTAGRAM ANALYTICS
+// const username = 'USERNAME'; 
 
-// const ACCOUNT_ID = process.env.INSTAGRAM_ACCOUNT_ID;
+// const requestUrl = `https://i.instagram.com/api/v1/users/web_profile_info/?username=${username}`;
 
-// async function fetchInstagramAnalytics() {
-//   if (!ACCESS_TOKEN || !ACCOUNT_ID) {
-//     console.error('Missing Instagram Access Token or Account ID');
-//     return;
-//   }
+// const headers = {
+//   'User-Agent': 'Instagram 76.0.0.15.395 Android (24/7.0; 640dpi; 1440x2560; samsung; SM-G930F; herolte; samsungexynos8890; en_US; 138226743)',
+//   'Origin': 'https://www.instagram.com',
+//   'Referer': 'https://www.instagram.com/',
+// };
 
-//   try {
-//     const response = await axios.get(
-//       `${BASE_URL}/${ACCOUNT_ID}/insights`,
-//       {
-//         params: {
-//           access_token: ACCESS_TOKEN,
-//           metric: 'impressions,reach,profile_views,followers', // Example metrics
-//           period: 'day',  // Change to 'week', 'month', etc. as needed
-//         }
-//       }
-//     );
-//     console.log('Instagram Analytics Data:', response.data);
-//   } catch (error) {
-//     console.error('Error fetching Instagram analytics:', error.response?.data || error.message);
-//   }
-// }
-
+// axios.get(requestUrl, { headers })
+//   .then((response) => {
+//     const data = response.data;
+//     const followerCount = data.data.user.edge_followed_by.count;
+//     console.log('Follower count:', followerCount);
+//   })
+//   .catch((error) => {
+//     console.error('Error fetching data:', error.message);
+//   });
 
 
 module.exports = { generateToken, generateUrl, getYouTubeAnalytics }
