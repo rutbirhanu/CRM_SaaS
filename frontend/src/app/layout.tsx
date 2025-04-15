@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Poppins } from "next/font/google"
+import {makeStore} from "./../redux/store"
 import "./globals.css";
+import { Provider } from "react-redux";
 
 
 const geistSans = Geist({
@@ -19,6 +21,7 @@ const poppins = Poppins({
     weight: "400"
 })
 
+const store = makeStore()
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -35,9 +38,11 @@ export default function RootLayout({
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             >
-                <div className={`overflow-auto text-black ${poppins.className}`}>
-                    {children}
-                </div>
+                <Provider store={store}>
+                    <div className={`overflow-auto text-black ${poppins.className}`}>
+                        {children}
+                    </div>
+                </Provider>
 
             </body>
         </html>
