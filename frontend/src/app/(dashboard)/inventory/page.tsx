@@ -10,7 +10,6 @@ import Image from "next/image";
 
 function Page() {
 
-
   const products = [
     {
       id: 1,
@@ -51,7 +50,6 @@ function Page() {
         </Link>
       </div>
 
-
       <div className='bg-white shadow-md border-l-4 border-red-500 p-5 rounded-xl mb-10 mt-4'>
         <div className='flex items-center gap-4'>
           <div className='text-red-600 bg-red-100 p-3 rounded-full'>
@@ -74,8 +72,6 @@ function Page() {
           <InventoryWarningCard />
         </div>
       </div>
-
-
 
 
       <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-[0_3px_10px_rgba(0,0,0,0.08)] border border-gray-200 hover:shadow-md transition-all duration-300 w-fit cursor-pointer">
