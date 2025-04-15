@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  frontend:
+    build: "./frontend/dockerfile"
+    container_name: "cont-1"
+    ports:
+      - 3000:3000
+    volumes:
+      -
