@@ -171,17 +171,26 @@
 // export default Page
 
 
-import { fetchProducts } from '../../../redux/inventorySlice'
-import { wrapper } from '../../../redux/store'
+
+
+'use client'
+
+import { useEffect } from 'react'
+import { useAppDispatch } from '@/redux/hook'
+import { fetchInventory } from '../../../redux/inventorySlice'
 import InventoryClient from './inventoryClient'
 
-export const getServerSideProps = wrapper.getServerSideProps(
-  (store) => async () => {
-    await store.dispatch(fetchProducts())
-    return { props: {} }
-  }
-)
 
-export default function InventoryPage() {
+const InventoryPage = () => {
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(fetchInventory())
+  }, [dispatch])
+
   return <InventoryClient />
 }
+
+export default InventoryPage
+
+
