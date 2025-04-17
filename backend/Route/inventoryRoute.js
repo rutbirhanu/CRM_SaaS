@@ -7,6 +7,7 @@ router.get("/", inventoryController.getAllProducts);
 router.get("/:id", inventoryController.getProductById);
 router.put("/:id", inventoryController.updateProduct);
 router.delete("/:id", inventoryController.deleteProduct);
+
 router.post("/reduce-stock", inventoryController.reduceStock);
 router.get("/low-stock", inventoryController.getLowStockProducts);
 

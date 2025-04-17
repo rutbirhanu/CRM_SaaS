@@ -37,9 +37,13 @@ export const fetchInventory = createAsyncThunk<Product[]>(
       }
 
       return await res.json();
-    } catch (err: any) {
-      return rejectWithValue(err.message || 'Fetch failed');
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        return rejectWithValue(err.message || "Fetch failed");
+      }
+      return rejectWithValue("Fetch failed");
     }
+    
   }
 );
 

@@ -14,7 +14,6 @@ import Image from "next/image";
 import { useAppDispatch } from '@/redux/hook'
 
 
-
 function InventoryClient() {
 
   const dispatch = useAppDispatch()
@@ -39,13 +38,12 @@ function InventoryClient() {
 
 
 
-
   // if (loading) return <p>Loading...</p>
   // if (error) return <p>Error: {error}</p>
 
 
 
-  
+
   const productss = [
     {
       id: 1,

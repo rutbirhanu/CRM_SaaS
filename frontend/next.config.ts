@@ -2,7 +2,17 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ['eu.christianlouboutin.com', 'us.christianlouboutin.com'],
+    remotePatterns: [
+      {
+            protocol: 'https',
+            hostname: 'eu.christianlouboutin.com',
+      },
+      
+      {
+            protocol: 'https',
+            hostname: 'us.christianlouboutin.com',
+          }
+    ],
   }
 };
 
