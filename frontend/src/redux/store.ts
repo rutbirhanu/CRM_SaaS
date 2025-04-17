@@ -1,8 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
+import inventorySlice from './inventorySlice'
+import customerSlice from "./customerSlice"
 
 export const makeStore = () => {
   return configureStore({
-    reducer: {},
+    reducer: {
+      inventory: inventorySlice,
+      customer:customerSlice
+    },
   })
 }
 

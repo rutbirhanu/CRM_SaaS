@@ -1,9 +1,9 @@
 'use client'
 
-import { useSelector, useDispatch } from 'react-redux'
-import { AppState } from '../../../redux/store'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../../redux/store'
 import { useEffect } from 'react'
-import { fetchProducts } from '../../../redux/inventorySlice'
+import { fetchInventory } from '../../../redux/inventorySlice'
 import InventoryWarningCard from '@/components/InventoryWarningCard'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
@@ -11,59 +11,65 @@ import React from 'react'
 import { FaFilter } from "react-icons/fa";
 import { useState } from "react";
 import Image from "next/image";
+import { useAppDispatch } from '@/redux/hook'
 
 
 
 function InventoryClient() {
 
-    const dispatch = useDispatch()
-  const { products, loading, error } = useSelector(
-    (state: AppState) => state.inventory
+  const dispatch = useAppDispatch()
+  const { items, loading, error } = useSelector(
+    (state: RootState) => state.inventory
   )
 
   useEffect(() => {
-    if (products.length === 0) {
-      dispatch(fetchProducts() as any)
+    if (items.length === 0) {
+      dispatch(fetchInventory())
     }
-  }, [dispatch, products])
+  }, [dispatch, items])
 
-  if (loading) return <p>Loading...</p>
-  if (error) return <p>Error: {error}</p>
+  const [expandedRows, setExpandedRows] = useState<number[]>([]);
+
+  const toggleRow = (id: number) => {
+    setExpandedRows((prev) =>
+      prev.includes(id) ? prev.filter((rowId) => rowId !== id) : [...prev, id]
+    );
+  };
 
 
-    
-    const productss = [
-        {
-          id: 1,
-          name: "Product Name 1",
-          quantity: 10,
-          price: 10,
-          image:
-            "https://eu.christianlouboutin.com/media/catalog/product/3/1/3180466f065-3180466f065-main_image-ecommerce-christianlouboutin-folliesstrass-3180466_f065_1_1200x1200.jpg",
-          supplier: "Luxury Suppliers Inc.",
-          tags: ["heels", "women", "glam"],
-        },
-        {
-          id: 2,
-          name: "Product Name 2",
-          quantity: 5,
-          price: 20,
-          image:
-            "https://us.christianlouboutin.com/media/catalog/product/1/2/1250521r558-1250521r558-main_image-ecommerce-christianlouboutin-sokate-1250521_r558_1_1200x1200.jpg",
-          supplier: "Elegant Shoes Co.",
-          tags: ["red", "stiletto", "exclusive"],
-        },
-      ];
-    
-      const [expandedRows, setExpandedRows] = useState<number[]>([]);
-    
-      const toggleRow = (id: number) => {
-        setExpandedRows((prev) =>
-          prev.includes(id) ? prev.filter((rowId) => rowId !== id) : [...prev, id]
-        );
-      };
-    
-    
+
+
+
+  // if (loading) return <p>Loading...</p>
+  // if (error) return <p>Error: {error}</p>
+
+
+
+  
+  const productss = [
+    {
+      id: 1,
+      name: "Product Name 1",
+      quantity: 10,
+      price: 10,
+      image:
+        "https://eu.christianlouboutin.com/media/catalog/product/3/1/3180466f065-3180466f065-main_image-ecommerce-christianlouboutin-folliesstrass-3180466_f065_1_1200x1200.jpg",
+      supplier: "Luxury Suppliers Inc.",
+      tags: ["heels", "women", "glam"],
+    },
+    {
+      id: 2,
+      name: "Product Name 2",
+      quantity: 5,
+      price: 20,
+      image:
+        "https://us.christianlouboutin.com/media/catalog/product/1/2/1250521r558-1250521r558-main_image-ecommerce-christianlouboutin-sokate-1250521_r558_1_1200x1200.jpg",
+      supplier: "Elegant Shoes Co.",
+      tags: ["red", "stiletto", "exclusive"],
+    },
+  ];
+
+
   return (
     <div>
       <div className="flex justify-between items-center my-7 mx-5">
@@ -121,8 +127,8 @@ function InventoryClient() {
             </tr>
           </thead>
           <tbody>
-            {products.map((product) => (
-              <>
+            {productss.map((product) => (
+              <React.Fragment key={product.id}>
                 <tr key={product.id} className="border-b">
                   <td className="px-4 py-2">
                     <input
@@ -180,7 +186,7 @@ function InventoryClient() {
                     </td>
                   </tr>
                 )}
-              </>
+              </React.Fragment>
             ))}
           </tbody>
         </table>
