@@ -2,7 +2,11 @@ const express = require("express");
 const router = express.Router();
 const inventoryController = require("../Controller/inventoryController");
 
-router.post("/add", inventoryController.addProduct);
+const multer = require('multer');
+const storage = multer.memoryStorage(); // keeps file in RAM
+const upload = multer({ storage });
+
+router.post("/add",upload.single("image"),inventoryController.addProduct);
 router.get("/", inventoryController.getAllProducts);
 router.get("/:id", inventoryController.getProductById);
 router.put("/:id", inventoryController.updateProduct);

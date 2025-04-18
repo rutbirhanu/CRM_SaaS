@@ -1,31 +1,42 @@
 const Inventory = require("../Model/inventoryModel");
 const cloudinary = require('../Config/cloudinaryConfig');
+const streamifier = require('streamifier');
+
+
+const uploadToCloudinary = (buffer) => {
+    return new Promise((resolve, reject) => {
+        const stream = cloudinary.uploader.upload_stream(
+            { folder: 'inventory_images' },
+            (error, result) => {
+                if (result) resolve(result);
+                else reject(error);
+            }
+        );
+
+        streamifier.createReadStream(buffer).pipe(stream);
+    });
+};
+
 
 // Add a new product to the inventory
-
 exports.addProduct = async (req, res) => {
     try {
-      const result = await cloudinary.uploader.upload(req.file.path, {
-        folder: 'inventory_images',
-      });
-  
-      // 2. Create new product with image URL
-      const newProduct = new Inventory({
-        ...req.body,
-        image: result.secure_url, // Store Cloudinary URL
-      });
-  
-      await newProduct.save();
-  
-      res.status(201).json({
-        message: 'Product added successfully',
-        product: newProduct,
-      });
+        const result = await uploadToCloudinary(req.file.buffer);
+        const newProduct = new Inventory({
+            ...req.body,
+            image: result.secure_url,
+        });
+
+        await newProduct.save();
+
+        res.status(201).json({
+            message: 'Product added successfully',
+            product: newProduct,
+        });
     } catch (error) {
-      res.status(500).json({ error: error.message });
+        res.status(500).json({ error: error.message });
     }
 };
-  
 
 
 // Get all products in the inventory
