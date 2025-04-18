@@ -20,20 +20,25 @@ const addCustomer = async (req, res) => {
   }
 };
 
+
 // ✅ Get all customers
 const getAllCustomers = async (req, res) => {
   try {
-    const customers = await Customer.find().populate("purchases.productId");
+    const customers = await Customer.find();
+    // const customers = await Customer.find().populate("purchases.productId");
     res.status(200).json(customers);
   } catch (error) {
     res.status(500).json({ message: "Server error", error });
   }
 };
 
+
 // ✅ Get a single customer by ID
 const getCustomerById = async (req, res) => {
   try {
-    const customer = await Customer.findById(req.params.id).populate("purchases.productId");
+    const customer = await Customer.findById(req.params.id);
+    // const customer = await Customer.findById(req.params.id).populate("purchases.productId");
+
     if (!customer) return res.status(404).json({ message: "Customer not found" });
 
     res.status(200).json(customer);
@@ -41,6 +46,7 @@ const getCustomerById = async (req, res) => {
     res.status(500).json({ message: "Server error", error });
   }
 };
+
 
 // ✅ Update customer details
 const updateCustomer = async (req, res) => {
@@ -59,6 +65,7 @@ const updateCustomer = async (req, res) => {
     res.status(500).json({ message: "Server error", error });
   }
 };
+
 
 // ✅ Add a purchase for a customer
 const addPurchase = async (req, res) => {
@@ -103,6 +110,7 @@ const deleteCustomer = async (req, res) => {
   }
 };
 
+
 // ✅ Redeem loyalty points
 const redeemLoyaltyPoints = async (req, res) => {
   try {
@@ -123,6 +131,8 @@ const redeemLoyaltyPoints = async (req, res) => {
     res.status(500).json({ message: "Server error", error });
   }
 };
+
+
 
 module.exports = {
   addCustomer,

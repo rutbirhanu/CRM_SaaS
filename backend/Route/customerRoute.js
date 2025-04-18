@@ -12,7 +12,7 @@ const {
 } = require("../Controller/customerController");
 
 
-router.post("/", addCustomer);
+router.post("/add", addCustomer);
 router.get("/", getAllCustomers);
 router.get("/:id", getCustomerById);
 router.get("loyality/:id", redeemLoyaltyPoints);

@@ -3,6 +3,19 @@ const cloudinary = require('../Config/cloudinaryConfig');
 const streamifier = require('streamifier');
 
 
+// const uploadToCloudinary = (fileBuffer) => {
+//     return new Promise((resolve, reject) => {
+//       const stream = cloudinary.uploader.upload_stream((error, result) => {
+//         if (error) return reject(error);
+//         resolve(result);
+//       });
+  
+//       stream.end(fileBuffer); // this pushes the buffer to the stream
+//     });
+//   };
+
+  
+
 const uploadToCloudinary = (buffer) => {
     return new Promise((resolve, reject) => {
         const stream = cloudinary.uploader.upload_stream(
@@ -25,6 +38,7 @@ exports.addProduct = async (req, res) => {
         const newProduct = new Inventory({
             ...req.body,
             image: result.secure_url,
+            // result.public_id
         });
 
         await newProduct.save();
@@ -78,6 +92,10 @@ exports.updateProduct = async (req, res) => {
 // Delete a product from the inventory
 exports.deleteProduct = async (req, res) => {
     try {
+        // if (product.imagePublicId) {
+        //     await cloudinary.uploader.destroy(product.imagePublicId);
+        //   }
+      
         const deletedProduct = await Inventory.findByIdAndDelete(req.params.id);
         if (!deletedProduct) {
             return res.status(404).json({ message: "Product not found" });

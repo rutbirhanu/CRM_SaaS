@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(cors()); 
 
 
-app.use("/customers", customerRoutes);
+app.use("/customer", customerRoutes);
 app.use("/inventory", inventoryRoutes);
 app.use("/admin", adminRoutes);
 app.use("/socials", socialsRoutes);
