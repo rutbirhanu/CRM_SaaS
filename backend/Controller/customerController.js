@@ -88,7 +88,7 @@ const addPurchase = async (req, res) => {
 
     customer.purchases.push(newPurchase);
     customer.totalSpent += totalPrice;
-    customer.loyaltyPoints += Math.floor(totalPrice / 10); // 1 point per $10 spent
+    customer.loyaltyPoints += Math.floor(totalPrice / 10); // 1 point per $100 spent
 
     await customer.save();
 

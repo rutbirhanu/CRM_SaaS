@@ -1,6 +1,7 @@
 const oauth2Client = require("../Config/youtubeOauthConfig")
-// import axios from 'axios';
+const axios = require('axios');
 require("dotenv").config();
+
 const { google } = require("googleapis");
 const BASE_INSTAGRAM_URL = 'https://graph.instagram.com';
 const BASE_FACEBOOK_URL = 'https://graph.facebook.com/v12.0';
@@ -75,8 +76,32 @@ async function getYouTubeAnalytics() {
 }
 
 
+//GET INSTAGRAM FOLLOWER COUNT
 
-// //FACEBOOK ANALYTICS
+// const username = 'USERNAME'; 
+
+// const requestUrl = `https://i.instagram.com/api/v1/users/web_profile_info/?username=${username}`;
+
+// const headers = {
+//   'User-Agent': 'Instagram 76.0.0.15.395 Android (24/7.0; 640dpi; 1440x2560; samsung; SM-G930F; herolte; samsungexynos8890; en_US; 138226743)',
+//   'Origin': 'https://www.instagram.com',
+//   'Referer': 'https://www.instagram.com/',
+// };
+
+// axios.get(requestUrl, { headers })
+//   .then((response) => {
+//     const data = response.data;
+//     const followerCount = data.data.user.edge_followed_by.count;
+//     console.log('Follower count:', followerCount);
+//   })
+//   .catch((error) => {
+//     console.error('Error fetching data:', error.message);
+//   });
+
+
+
+
+  // //FACEBOOK ANALYTICS
 
 // const PAGE_ID = process.env.PAGE_ID;
 
@@ -104,30 +129,6 @@ async function getYouTubeAnalytics() {
 // }
 
 
-
-//GET INSTAGRAM FOLLOWER COUNT
-
-// const axios = require('axios');
-
-// const username = 'USERNAME'; 
-
-// const requestUrl = `https://i.instagram.com/api/v1/users/web_profile_info/?username=${username}`;
-
-// const headers = {
-//   'User-Agent': 'Instagram 76.0.0.15.395 Android (24/7.0; 640dpi; 1440x2560; samsung; SM-G930F; herolte; samsungexynos8890; en_US; 138226743)',
-//   'Origin': 'https://www.instagram.com',
-//   'Referer': 'https://www.instagram.com/',
-// };
-
-// axios.get(requestUrl, { headers })
-//   .then((response) => {
-//     const data = response.data;
-//     const followerCount = data.data.user.edge_followed_by.count;
-//     console.log('Follower count:', followerCount);
-//   })
-//   .catch((error) => {
-//     console.error('Error fetching data:', error.message);
-//   });
 
 
 module.exports = { generateToken, generateUrl, getYouTubeAnalytics }
