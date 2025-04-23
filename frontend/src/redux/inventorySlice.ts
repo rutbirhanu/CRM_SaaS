@@ -22,14 +22,15 @@ const initialState: InventoryState = {
   error: null,
 };
 
-const BASEURL = "http:/localhost:3000"
+const BASEURL = "http:/localhost:3000/inventory"
 
 // ✅ Fetch all items (GET)
 export const fetchInventory = createAsyncThunk<Product[]>(
   'inventory/fetchInventory',
   async (_, { rejectWithValue }) => {
     try {
-      const res = await fetch(`${BASEURL}/inventory/`, {
+      const res = await fetch(`${BASEURL}/`, {
+        method: 'GET',
         credentials: 'include',
       });
 
@@ -45,7 +46,7 @@ export const fetchInventory = createAsyncThunk<Product[]>(
       }
       return rejectWithValue("Fetch failed");
     }
-    
+
   }
 );
 
@@ -54,12 +55,19 @@ export const addToInventory = createAsyncThunk(
   "inventory/addToInventory",
   async (_, { rejectWithValue }) => {
     try {
-      const request = await fetch(`${BASEURL}/add`, {
-        credentials : 'include'
+      const req = await fetch(`${BASEURL}/add`, {
+        method: "POST",
+        credentials: 'include'
       })
-  
-      const res = await request.json()
+
+      if (!req.ok) {
+        const error = await req.text();
+        return rejectWithValue(error);
+      }
+
+      const res = await req.json()
       console.log(res)
+      return res
     }
     catch (err: unknown) {
       if (err instanceof Error) {
@@ -67,7 +75,35 @@ export const addToInventory = createAsyncThunk(
       }
 
       return rejectWithValue("Process failed")
-   }
+    }
+  }
+)
+
+export const fetchItemFromInventory = createAsyncThunk(
+  "inventory/fetchItemFromInventory",
+  async (itemId, { rejectWithValue }) => {
+    try {
+
+      const req = await fetch(`${BASEURL}/:${itemId}`, {
+        method: 'GET',
+        credentials: 'include'
+      })
+
+      if (!req.ok) {
+        const error = await req.text();
+        return rejectWithValue(error);
+      }
+      const res = await req.json()
+
+      return res
+
+    }
+    catch (err: unknown) {
+      if (err instanceof Error) {
+        return rejectWithValue(err.message || "fetch failed")
+      }
+      return rejectWithValue("fetch failed")
+    }
   }
 )
 
