@@ -22,12 +22,14 @@ const initialState: InventoryState = {
   error: null,
 };
 
+const BASEURL = "http:/localhost:3000"
+
 // ✅ Fetch all items (GET)
 export const fetchInventory = createAsyncThunk<Product[]>(
   'inventory/fetchInventory',
   async (_, { rejectWithValue }) => {
     try {
-      const res = await fetch('http://localhost:3500/api/inventory', {
+      const res = await fetch(`${BASEURL}/inventory/`, {
         credentials: 'include',
       });
 
@@ -46,6 +48,28 @@ export const fetchInventory = createAsyncThunk<Product[]>(
     
   }
 );
+
+
+export const addToInventory = createAsyncThunk(
+  "inventory/addToInventory",
+  async (_, { rejectWithValue }) => {
+    try {
+      const request = await fetch(`${BASEURL}/add`, {
+        credentials : 'include'
+      })
+  
+      const res = await request.json()
+      console.log(res)
+    }
+    catch (err: unknown) {
+      if (err instanceof Error) {
+        return rejectWithValue(err.message || "Process failed");
+      }
+
+      return rejectWithValue("Process failed")
+   }
+  }
+)
 
 // You can add more thunks like addItem, deleteItem, updateItem etc.
 
