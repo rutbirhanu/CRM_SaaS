@@ -24,11 +24,28 @@ const initialState: CustomerState = {
 // -------------------------
 // Thunks (async actions)
 // -------------------------
+const BASEURL = "http:/localhost:3000/customer"
 
-export const fetchCustomers = createAsyncThunk("customers/fetchCustomers", async () => {
-  const res = await fetch("/api/customers");
-  if (!res.ok) throw new Error("Failed to fetch customers");
-  return await res.json();
+
+export const fetchCustomers = createAsyncThunk(
+  "customer/fetchCustomers",
+  async (_, {rejectWithValue}) => {
+    try {
+      const req = await fetch(`${BASEURL}/add`,{
+        method: "POST",
+        credentials: 'include'
+      }
+    );
+    if (!req.ok) throw new Error("Failed to fetch customers");
+    return await req.json();
+    }
+    catch (err: unknown) {
+      if (err instanceof Error) {
+        return rejectWithValue(err.message || "fetch failed")
+      }
+      
+    }
+    
 });
 
 export const addCustomer = createAsyncThunk("customers/addCustomer", async (newCustomer: Omit<Customer, "id">) => {

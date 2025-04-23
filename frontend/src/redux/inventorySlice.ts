@@ -107,6 +107,66 @@ export const fetchItemFromInventory = createAsyncThunk(
   }
 )
 
+
+export const removeItemFromInventory = createAsyncThunk(
+  "inventory/removeItemFromInventory",
+  async (itemId, { rejectWithValue }) => {
+    try {
+
+      const req = await fetch(`${BASEURL}/:${itemId}`, {
+        method: 'DELETE',
+        credentials: 'include'
+      })
+
+      if (!req.ok) {
+        const error = await req.text();
+        return rejectWithValue(error);
+      }
+      const res = await req.json()
+
+      return res
+
+    }
+    catch (err: unknown) {
+      if (err instanceof Error) {
+        return rejectWithValue(err.message || "fetch failed")
+      }
+      return rejectWithValue("fetch failed")
+    }
+  }
+)
+
+
+export const updateItemFromInventory = createAsyncThunk(
+  "inventory/updateItemFromInventory",
+  async (itemId, { rejectWithValue }) => {
+    try {
+
+      const req = await fetch(`${BASEURL}/:${itemId}`, {
+        method: 'PUT',
+        credentials: 'include'
+      })
+
+      if (!req.ok) {
+        const error = await req.text();
+        return rejectWithValue(error);
+      }
+      const res = await req.json()
+
+      return res
+
+    }
+    catch (err: unknown) {
+      if (err instanceof Error) {
+        return rejectWithValue(err.message || "fetch failed")
+      }
+      return rejectWithValue("fetch failed")
+    }
+  }
+)
+
+
+
 // You can add more thunks like addItem, deleteItem, updateItem etc.
 
 const inventorySlice = createSlice({
