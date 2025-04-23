@@ -53,11 +53,12 @@ export const fetchInventory = createAsyncThunk<Product[]>(
 
 export const addToInventory = createAsyncThunk(
   "inventory/addToInventory",
-  async (_, { rejectWithValue }) => {
+  async (itemData, { rejectWithValue }) => {
     try {
       const req = await fetch(`${BASEURL}/add`, {
         method: "POST",
-        credentials: 'include'
+        credentials: 'include',
+        body: JSON.stringify(itemData)
       })
 
       if (!req.ok) {
@@ -139,12 +140,13 @@ export const removeItemFromInventory = createAsyncThunk(
 
 export const updateItemFromInventory = createAsyncThunk(
   "inventory/updateItemFromInventory",
-  async (itemId, { rejectWithValue }) => {
+  async (updatedData, { rejectWithValue }) => {
     try {
 
-      const req = await fetch(`${BASEURL}/:${itemId}`, {
+      const req = await fetch(`${BASEURL}/:${updatedData.id}`, {
         method: 'PUT',
-        credentials: 'include'
+        credentials: 'include',
+        body: JSON.stringify(updatedData),
       })
 
       if (!req.ok) {

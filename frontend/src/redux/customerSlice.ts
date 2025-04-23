@@ -29,56 +29,95 @@ const BASEURL = "http:/localhost:3000/customer"
 
 export const fetchCustomers = createAsyncThunk(
   "customer/fetchCustomers",
-  async (_, {rejectWithValue}) => {
+  async (_, { rejectWithValue }) => {
     try {
-      const req = await fetch(`${BASEURL}/add`,{
-        method: "POST",
+      const req = await fetch(`${BASEURL}/`, {
+        method: "GET",
         credentials: 'include'
       }
-    );
-    if (!req.ok) throw new Error("Failed to fetch customers");
-    return await req.json();
+      );
+      if (!req.ok) throw new Error("Failed to fetch customers");
+      return await req.json();
     }
     catch (err: unknown) {
       if (err instanceof Error) {
         return rejectWithValue(err.message || "fetch failed")
       }
-      
+      return rejectWithValue("fetch failed")
+
+    }
+  });
+
+
+export const addCustomer = createAsyncThunk(
+  "customer/addCustomer",
+  async (newCustomer, { rejectWithValue }) => {
+    try {
+      const req = await fetch(`${BASEURL}/add`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newCustomer),
+      });
+
+      if (!req.ok) throw new Error("Failed to fetch customers");
+      return await req.json();
+    }
+
+    catch (err: unknown) {
+      if (err instanceof Error) {
+        return rejectWithValue(err.message || "fetch failed")
+      }
+      return rejectWithValue("fetch failed")
+    }
+  });
+
+
+export const updateCustomer = createAsyncThunk(
+  "customer/updateCustomer",
+  async (updatedData, { rejectWithValue }) => {
+    try {
+      const res = await fetch(`${BASEURL}/:${updatedData.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedData),
+      });
+      if (!res.ok) throw new Error("Failed to update customer");
+      return await res.json();
+    }
+    catch (err: unknown) {
+      if (err instanceof Error) {
+        return rejectWithValue(err.message || "fetch failed")
+      }
+      return rejectWithValue("fetch failed")
+    }
+
+  });
+
+
+export const deleteCustomer = createAsyncThunk(
+  "customer/deleteCustomer",
+  async (customerId, { rejectWithValue }) => {
+    try {
+      const req = await fetch(`${BASEURL}/:${customerId}`, {
+        method: "DELETE",
+        credentials: 'include'
+      });
+
+      if (!req.ok) throw new Error("Failed to delete customer");
+      return customerId;
     }
     
-});
+    catch (err: unknown) {
+      if (err instanceof Error) {
+        return rejectWithValue(err.message || "fetch failed")
+      }
+      return rejectWithValue("fetch failed")
+    }
 
-export const addCustomer = createAsyncThunk("customers/addCustomer", async (newCustomer: Omit<Customer, "id">) => {
-  const res = await fetch("/api/customers", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(newCustomer),
   });
-  if (!res.ok) throw new Error("Failed to add customer");
-  return await res.json();
-});
 
-export const updateCustomer = createAsyncThunk("customers/updateCustomer", async (updatedCustomer: Customer) => {
-  const res = await fetch(`/api/customers/${updatedCustomer.id}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(updatedCustomer),
-  });
-  if (!res.ok) throw new Error("Failed to update customer");
-  return await res.json();
-});
 
-export const deleteCustomer = createAsyncThunk("customers/deleteCustomer", async (customerId: number) => {
-  const res = await fetch(`/api/customers/${customerId}`, {
-    method: "DELETE",
-  });
-  if (!res.ok) throw new Error("Failed to delete customer");
-  return customerId;
-});
 
-// -------------------------
-// Slice
-// -------------------------
 
 const customerSlice = createSlice({
   name: "customers",
