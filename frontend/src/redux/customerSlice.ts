@@ -118,7 +118,6 @@ export const deleteCustomer = createAsyncThunk(
 
 
 
-
 const customerSlice = createSlice({
   name: "customers",
   initialState,

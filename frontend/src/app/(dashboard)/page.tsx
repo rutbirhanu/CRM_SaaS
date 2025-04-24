@@ -160,7 +160,7 @@ export default function EnhancedDashboard() {
       </div>
 
       {/* Additional Info */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
+      {/* <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
         <div className="bg-white p-6 rounded-2xl shadow-md">
           <h2 className="text-lg font-semibold mb-4 flex items-center gap-2"><FcBusinessman /> Inventory Stats</h2>
           <p>Total Products: <strong>{inventoryStats.totalProducts}</strong></p>
@@ -196,10 +196,10 @@ export default function EnhancedDashboard() {
             {recommendations.map((rec, idx) => <li key={idx}>{rec}</li>)}
           </ul>
         </div>
-      </div>
+      </div> */}
 
       {/* Revenue Trend */}
-      <div className="bg-white p-6 rounded-2xl shadow-md">
+      {/* <div className="bg-white p-6 rounded-2xl shadow-md">
         <h2 className="text-lg font-semibold mb-4">Monthly Revenue Trend</h2>
         <ResponsiveContainer width="100%" height={250}>
           <LineChart data={trendData}>
@@ -210,7 +210,7 @@ export default function EnhancedDashboard() {
             <Line type="monotone" dataKey="revenue" stroke="#8884d8" strokeWidth={2} />
           </LineChart>
         </ResponsiveContainer>
-      </div>
+      </div> */}
 
 
       <div className="bg-white p-6 rounded-2xl shadow-md mb-10">
@@ -263,14 +263,14 @@ export default function EnhancedDashboard() {
       </div>
 
       {/* Recommendations */}
-      <div className="bg-white p-6 rounded-2xl shadow-md">
+      {/* <div className="bg-white p-6 rounded-2xl shadow-md">
         <h2 className="text-lg font-semibold mb-4">Business Recommendations</h2>
         <ul className="list-disc pl-5 text-sm text-gray-700 space-y-2">
           {recommendations.map((rec, idx) => (
             <li key={idx}>{rec}</li>
           ))}
         </ul>
-      </div>
+      </div> */}
 
     </div>
   );

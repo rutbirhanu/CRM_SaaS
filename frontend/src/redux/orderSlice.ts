@@ -1,11 +1,14 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
+
+const BASEURL = "http:/localhost:3000/customer"
+
 export const fetchOrderAnalytics = createAsyncThunk(
-  'orderAnalytics/fetchOrderAnalytics',
-  async (_, thunkAPI) => {
+  'order/fetchOrderAnalytics',
+  async (_, {rejectWithValue}) => {
     try {
-      const res = await fetch('/api/analytics/orders', {
-        credentials: 'include', // If your API requires cookies/auth
+      const res = await fetch(`${BASEURL}/orders`, {
+        credentials: 'include', 
         headers: {
           'Content-Type': 'application/json',
         },
@@ -13,13 +16,17 @@ export const fetchOrderAnalytics = createAsyncThunk(
 
       if (!res.ok) {
         const errorData = await res.json();
-        return thunkAPI.rejectWithValue(errorData.message || 'Failed to fetch analytics');
+        return rejectWithValue(errorData.message || 'Failed to fetch analytics');
       }
 
       const data = await res.json();
       return data;
-    } catch (err) {
-      return thunkAPI.rejectWithValue(err.message || 'Unexpected error');
+    }
+    catch (err: unknown) {
+      if (err instanceof Error) {
+        return rejectWithValue(err.message || "fetch failed")
+      }
+      return rejectWithValue("fetch failed")
     }
   }
 );
