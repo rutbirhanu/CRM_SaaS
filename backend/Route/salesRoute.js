@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const {
+  getOrders,
   createSale,
   getSummary,
   getMonthlySales,
@@ -9,6 +10,7 @@ const {
 } = require("../controllers/salesController");
 
 router.post("/add", createSale);
+router.get("/", getOrders)
 router.get("/summary", getSummary);
 router.get("/monthly", getMonthlySales);
 router.get("/top-products", getTopProducts);

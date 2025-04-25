@@ -1,13 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 
-const BASEURL = "http:/localhost:3000/customer"
+const BASEURL = "http:/localhost:3000/order"
 
 export const fetchOrderAnalytics = createAsyncThunk(
   'order/fetchOrderAnalytics',
   async (_, {rejectWithValue}) => {
     try {
-      const res = await fetch(`${BASEURL}/orders`, {
+      const res = await fetch(`${BASEURL}/orders/`, {
         credentials: 'include', 
         headers: {
           'Content-Type': 'application/json',
@@ -30,6 +30,9 @@ export const fetchOrderAnalytics = createAsyncThunk(
     }
   }
 );
+
+
+
 
 const orderAnalyticsSlice = createSlice({
   name: 'orderAnalytics',

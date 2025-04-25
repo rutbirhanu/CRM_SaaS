@@ -10,6 +10,16 @@ exports.createSale = async (req, res) => {
   }
 };
 
+exports.getOrders = async (req, res) => {
+  try {
+    const orders = await Sale.find();
+    res.status(200).json(orders);
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error });
+  }
+};
+
+
 // Get summary stats
 exports.getSummary = async (req, res) => {
   try {
