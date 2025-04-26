@@ -1,3 +1,4 @@
+const Customer = require("../Model/customerModel")
 
 export const redeemPoints = async (req, res) => {
     const { customerId, pointsToRedeem } = req.body;

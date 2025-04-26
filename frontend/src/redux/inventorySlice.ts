@@ -6,7 +6,6 @@ interface Product {
   quantity: number;
   price: number;
   image: string;
-  supplier: string;
   tags: string[];
 }
 
@@ -188,7 +187,35 @@ const inventorySlice = createSlice({
       .addCase(fetchInventory.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
-      });
+      })
+      
+      // add item
+      .addCase(addToInventory.fulfilled, (state, action: PayloadAction<Product>) => {
+        state.items.push(action.payload);
+      })
+      .addCase(addToInventory.rejected, (state, action) => {
+        state.error = action.payload as string;
+      })
+
+      // remove item
+      .addCase(removeItemFromInventory.fulfilled, (state, action: PayloadAction<{ id: number }>) => {
+        state.items = state.items.filter(item => item.id !== action.payload.id);
+      })
+      .addCase(removeItemFromInventory.rejected, (state, action) => {
+        state.error = action.payload as string;
+      })
+
+      // update item
+      .addCase(updateItemFromInventory.fulfilled, (state, action: PayloadAction<Product>) => {
+        const index = state.items.findIndex(item => item.id === action.payload.id);
+        if (index !== -1) {
+          state.items[index] = action.payload;
+        }
+      })
+      .addCase(updateItemFromInventory.rejected, (state, action) => {
+        state.error = action.payload as string;
+      })
+
   },
 });
 
