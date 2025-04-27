@@ -23,3 +23,14 @@ export const redeemPoints = async (req, res) => {
     }
   };
   
+  export const getCustomersWhoRedeemedPoints = async (req, res) => {
+    try {
+      // Fetch customers who have loyaltyPoints less than some max value (e.g., < starting value)
+      const redeemedCustomers = await Customer.find({ loyaltyPoints: { $lt: 1000 } }) 
+  
+      res.status(200).json(redeemedCustomers);
+    } catch (err) {
+      console.error("Error fetching redeemed customers:", err);
+      res.status(500).json({ message: "Failed to fetch redeemed customers" });
+    }
+  };
