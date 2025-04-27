@@ -153,7 +153,7 @@ const customerSlice = createSlice({
 
       // Delete
       .addCase(deleteCustomer.fulfilled, (state, action) => {
-        state.customers = state.customers.filter((c) => c.id !== action.payload);
+        state.customers = state.customers.filter((c) => c.id !== action.payload.id);
       });
   },
 });
