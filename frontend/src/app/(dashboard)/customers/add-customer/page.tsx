@@ -44,10 +44,10 @@ function Page() {
           </div>
         </div>
   
-        <div className="mt-6 flex justify-center">
+        <div className="mt-16 flex justify-center">
           <button
             type="submit"
-            className="w-2/3 py-2 rounded-lg bg-blue-900 hover:bg-black text-white font-medium shadow-md transition-all"
+            className="w-1/3 py-2 rounded-lg bg-blue-900 hover:bg-black text-white font-medium shadow-md transition-all"
           >
             Save Customer
           </button>

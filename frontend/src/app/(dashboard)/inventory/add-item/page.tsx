@@ -114,10 +114,10 @@ export default function Page() {
                 />
               </div>
 
-              <div className="flex justify-center mt-6">
+              <div className="flex justify-center mt-10">
                 <button
                   type="submit"
-                  className="w-2/3 py-2 rounded-lg bg-blue-900 hover:bg-black text-white font-medium"
+                  className="w-1/3 py-2 rounded-lg bg-blue-900 hover:bg-black text-white font-medium"
                 >
                   Save Item
                 </button>
