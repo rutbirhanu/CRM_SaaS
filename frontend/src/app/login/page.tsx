@@ -1,5 +1,6 @@
 import React from 'react';
 import { signIn } from '../../../auth';
+import { FcGoogle } from 'react-icons/fc';
 
 const Login: React.FC = () => {
     return (
@@ -20,18 +21,19 @@ const Login: React.FC = () => {
                         />
                     </div>
                     {/* <div className='flex justify-center w-full '> */}
-                        <form action={
-                            async () => {
-                                'use server'
-                                await signIn()
-                            }
+                    <form action={
+                        async () => {
+                            'use server'
+                            await signIn()
+                        }
 
-                        } className='flex justify-center'>
+                    } className='flex justify-center'>
 
-                            <button type="submit" className="w-2/3 bg-blue-500 text-white text-center rounded-lg px-1 py-2 mt-4">
-                                Sign In
-                            </button>
-                        </form>
+                        <button type="submit" className="w-2/3 bg-blue-900 text-white text-center rounded-lg px-1 py-2 mt-4">
+                            Sign In
+                        </button>
+
+                    </form>
 
                     {/* </div> */}
                 </form>
@@ -48,8 +50,10 @@ const Login: React.FC = () => {
                         await signIn('google')
                     }
                 } className='flex justify-center'>
-                    <button className="w-2/3 bg-red-500 text-white rounded-lg px-4 py-2">
-                        Sign in with Google
+                    <button
+                        className="w-2/3 text-[14px] flex items-center justify-center py-2 rounded-lg bg-gray-200 hover:bg-gray-300 text-gray-900 font-medium shadow-inner transition-all"
+                    >
+                        <FcGoogle className="mr-2 text-xl" /> Sign Up with Google
                     </button>
                 </form>
             </div>

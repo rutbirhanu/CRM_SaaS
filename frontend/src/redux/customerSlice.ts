@@ -155,7 +155,7 @@ const customerSlice = createSlice({
       .addCase(deleteCustomer.fulfilled, (state, action) => {
         state.customers = state.customers.filter((c) => c.id !== action.payload.id);
       });
-  },
+  }
 });
 
 export default customerSlice.reducer;
