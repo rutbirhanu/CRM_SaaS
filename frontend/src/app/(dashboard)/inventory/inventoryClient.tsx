@@ -21,6 +21,7 @@ function InventoryClient() {
     (state: RootState) => state.inventory
   )
 
+
   useEffect(() => {
     if (items.length === 0) {
       dispatch(fetchInventory())

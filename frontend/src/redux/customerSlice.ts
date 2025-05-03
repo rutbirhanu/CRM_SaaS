@@ -51,7 +51,7 @@ export const fetchCustomers = createAsyncThunk(
 
 export const addCustomer = createAsyncThunk(
   "customer/addCustomer",
-  async (newCustomer, { rejectWithValue }) => {
+  async (newCustomer: Customer, { rejectWithValue }) => {
     try {
       const req = await fetch(`${BASEURL}/add`, {
         method: "POST",

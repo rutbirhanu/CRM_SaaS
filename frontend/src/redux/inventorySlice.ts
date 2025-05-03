@@ -52,7 +52,7 @@ export const fetchInventory = createAsyncThunk<Product[]>(
 
 export const addToInventory = createAsyncThunk(
   "inventory/addToInventory",
-  async (itemData, { rejectWithValue }) => {
+  async (itemData: Product, { rejectWithValue }) => {
     try {
       const req = await fetch(`${BASEURL}/add`, {
         method: "POST",

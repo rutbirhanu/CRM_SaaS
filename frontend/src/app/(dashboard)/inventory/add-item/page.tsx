@@ -1,8 +1,13 @@
 'use client'
 
-import { useState } from "react";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import { addToInventory } from "@/redux/inventorySlice";
+import { useEffect, useState } from "react";
 
 export default function Page() {
+  const dispatch = useAppDispatch()
+  const { items, loading, error } = useAppSelector(state => state.inventory)
+
   const [showModal, setShowModal] = useState(false);
   const [itemData, setItemData] = useState({
     image: null as File | null,
@@ -31,6 +36,7 @@ export default function Page() {
 
   const handleAddItem = (e: React.FormEvent) => {
     e.preventDefault();
+    dispatch(addToInventory(itemData))
     // Handle form submission, like uploading the image and saving item data to the server
     console.log(itemData);
     setShowModal(false);
