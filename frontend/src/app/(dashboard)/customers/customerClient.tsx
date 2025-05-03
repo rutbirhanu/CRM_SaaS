@@ -8,36 +8,36 @@ import Link from "next/link";
 
 const CustomerPage = () => {
   const dispatch = useAppDispatch();
-  const { customer, loading, error } = useAppSelector((state) => state.customer);
+  const { customers, loading, error } = useAppSelector((state) => state.customer);
 
   useEffect(() => {
     dispatch(fetchCustomers());
   }, [dispatch]);
 
-
-  const customers = [
-    {
-      id: 1,
-      name: "John Doe",
-      email: "john.doe@example.com",
-      loyaltyPoints: 1250,
-      lastPurchase: "03/25/2025",
-    },
-    {
-      id: 2,
-      name: "Jane Smith",
-      email: "jane.smith@example.com",
-      loyaltyPoints: 850,
-      lastPurchase: "03/20/2025",
-    },
-    {
-      id: 3,
-      name: "Michael Johnson",
-      email: "michael.johnson@example.com",
-      loyaltyPoints: 1500,
-      lastPurchase: "03/18/2025",
-    },
-  ];
+console.log(customers)
+  // const customers = [
+  //   {
+  //     id: 1,
+  //     name: "John Doe",
+  //     email: "john.doe@example.com",
+  //     loyaltyPoints: 1250,
+  //     lastPurchase: "03/25/2025",
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Jane Smith",
+  //     email: "jane.smith@example.com",
+  //     loyaltyPoints: 850,
+  //     lastPurchase: "03/20/2025",
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Michael Johnson",
+  //     email: "michael.johnson@example.com",
+  //     loyaltyPoints: 1500,
+  //     lastPurchase: "03/18/2025",
+  //   },
+  // ];
 
   return (
     <div className="flex flex-col items-center justify-center h-full">

@@ -24,7 +24,7 @@ const initialState: CustomerState = {
 // -------------------------
 // Thunks (async actions)
 // -------------------------
-const BASEURL = "http:/localhost:3000/customer"
+const BASEURL = "http:/localhost:8080/customer"
 
 
 export const fetchCustomers = createAsyncThunk(
@@ -33,7 +33,7 @@ export const fetchCustomers = createAsyncThunk(
     try {
       const req = await fetch(`${BASEURL}/`, {
         method: "GET",
-        credentials: 'include'
+        // credentials: 'include'
       }
       );
       if (!req.ok) throw new Error("Failed to fetch customers");
