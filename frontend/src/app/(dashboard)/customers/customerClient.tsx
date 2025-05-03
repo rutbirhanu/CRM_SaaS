@@ -15,6 +15,8 @@ const CustomerPage = () => {
   }, [dispatch]);
 
 console.log(customers)
+
+
   // const customers = [
   //   {
   //     id: 1,

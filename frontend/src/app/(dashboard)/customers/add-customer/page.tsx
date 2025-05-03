@@ -1,10 +1,37 @@
+import { addCustomer } from "@/redux/customerSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import React, { useState } from "react";
+
 function Page() {
+
+  const [customerData, setCustomerData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    address:"",
+  })
+  
+const dispatch = useAppDispatch();
+const { customers, loading, error } = useAppSelector((state) => state.customer);
+
+  const submitForm = (e: React.FormEvent) => {
+    e.preventDefault()
+  dispatch(addCustomer())
+  }
+  
+  const handleCustomerData = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+    setCustomerData((prev) => ({
+      ...prev, [name]: value
+    })) 
+  }
+
   return (
     <div className="flex items-center justify-center h-full">
     <div className="w-full max-w-2xl bg-white shadow-2xl border border-gray-300 py-8 px-10 rounded-2xl">
       <h2 className="text-black text-center text-2xl font-semibold">Add New Customer</h2>
       
-      <form className="space-y-5 mt-6">
+      <form className="space-y-5 mt-6" onSubmit={submitForm}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
