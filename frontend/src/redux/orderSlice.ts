@@ -3,6 +3,13 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const BASEURL = "http:/localhost:3000/order"
 
+interface Order{
+  itemName: string;
+  quantity: number;
+  price: number;
+  // category: String;
+}
+
 export const fetchOrderAnalytics = createAsyncThunk(
   'sales/fetchOrderAnalytics',
   async (_, {rejectWithValue}) => {
@@ -34,7 +41,7 @@ export const fetchOrderAnalytics = createAsyncThunk(
 
 export const createSale = createAsyncThunk(
   'sales/createSale',
-  async (saleData , { rejectWithValue }) => {
+  async (saleData:Order , { rejectWithValue }) => {
     try {
       const res = await fetch(`${BASEURL}/sales/add`, {
         method: 'POST',
