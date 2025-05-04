@@ -39,6 +39,7 @@ function Page() {
                 id="name"
                 type="text"
                 name="name"
+                value={customerData.name}
                 onChange={handleCustomerData}
                 className="w-full py-2 px-4 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 shadow-inner"
               />
@@ -49,6 +50,7 @@ function Page() {
                 id="email"
                 type="email"
                 name="email"
+                value={customerData.email}
                 onChange={handleCustomerData}
                 className="w-full py-2 px-4 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 shadow-inner"
               />
@@ -59,6 +61,7 @@ function Page() {
                 id="phone"
                 type="text"
                 name="phone"
+                value={customerData.phone}
                 onChange={handleCustomerData}
                 className="w-full py-2 px-4 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 shadow-inner"
               />
@@ -69,6 +72,7 @@ function Page() {
                 id="address"
                 type="number"
                 name="address"
+                value={customerData.address}
                 onChange={handleCustomerData}
                 className="w-full py-2 px-4 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 shadow-inner"
               />
