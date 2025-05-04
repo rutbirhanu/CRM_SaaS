@@ -21,12 +21,13 @@ function InventoryClient() {
     (state: RootState) => state.inventory
   )
 
-
   useEffect(() => {
     if (items.length === 0) {
       dispatch(fetchInventory())
     }
   }, [dispatch, items])
+
+console.log(items)
 
   const [expandedRows, setExpandedRows] = useState<number[]>([]);
 
@@ -37,12 +38,8 @@ function InventoryClient() {
   };
 
 
-
-
   // if (loading) return <p>Loading...</p>
   // if (error) return <p>Error: {error}</p>
-
-
 
 
   const productss = [
@@ -126,7 +123,7 @@ function InventoryClient() {
             </tr>
           </thead>
           <tbody>
-            {productss.map((product) => (
+            {items.map((product) => (
               <React.Fragment key={product.id}>
                 <tr key={product.id} className="border-b">
                   <td className="px-4 py-2">

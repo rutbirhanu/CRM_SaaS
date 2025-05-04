@@ -11,8 +11,8 @@ export default function Page() {
   const [showModal, setShowModal] = useState(false);
   const [itemData, setItemData] = useState({
     image: null as File | null,
-    itemName: "",
-    quantity: "",
+    name: "",
+    stock: "",
     price: "",
   });
 
@@ -90,7 +90,7 @@ export default function Page() {
                 <input
                   type="text"
                   name="itemName"
-                  value={itemData.itemName}
+                  value={itemData.name}
                   onChange={handleSetItemData}
                   className="w-full py-2 px-4 border rounded-lg bg-gray-50 focus:ring-2 focus:ring-gray-200"
                 />
@@ -102,7 +102,7 @@ export default function Page() {
                 <input
                   type="number"
                   name="quantity"
-                  value={itemData.quantity}
+                  value={itemData.stock}
                   onChange={handleSetItemData}
                   className="w-full py-2 px-4 border rounded-lg bg-gray-50 focus:ring-2 focus:ring-gray-200"
                 />
