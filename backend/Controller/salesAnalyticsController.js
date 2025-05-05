@@ -10,17 +10,16 @@ exports.createSale = async (req, res) => {
   }
 };
 
-exports.getOrders = async (req, res) => {
+exports.getSales = async (req, res) => {
   try {
-    const orders = await Sale.find();
-    res.status(200).json(orders);
+    const sales = await Sale.find();
+    res.status(200).json(sales);
   } catch (error) {
     res.status(500).json({ message: "Server error", error });
   }
 };
 
 
-// Get summary stats
 exports.getSummary = async (req, res) => {
   try {
     const totalItems = await Sale.aggregate([
@@ -43,7 +42,7 @@ exports.getSummary = async (req, res) => {
   }
 };
 
-// Monthly sales chart
+
 exports.getMonthlySales = async (req, res) => {
   try {
     const monthly = await Sale.aggregate([
@@ -68,7 +67,7 @@ exports.getMonthlySales = async (req, res) => {
   }
 };
 
-// Top selling products
+
 exports.getTopProducts = async (req, res) => {
   try {
     const top = await Sale.aggregate([
@@ -89,7 +88,7 @@ exports.getTopProducts = async (req, res) => {
   }
 };
 
-// Sales by category
+
 exports.getSalesByCategory = async (req, res) => {
   try {
     const categories = await Sale.aggregate([
