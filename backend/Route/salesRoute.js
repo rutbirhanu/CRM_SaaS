@@ -7,7 +7,7 @@ const {
   getMonthlySales,
   getTopProducts,
   getSalesByCategory
-} = require("../controllers/salesController");
+} = require("../Controller/salesController");
 
 router.post("/add", createSale);
 router.get("/", getSales)
