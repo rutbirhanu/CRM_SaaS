@@ -17,7 +17,7 @@ app.use(express.json());
 app.use("/customer", customerRoutes);
 app.use("/inventory", inventoryRoutes);
 app.use("/admin", adminRoutes);
-app.use("/sale", salesRoutes)
+app.use("/sales", salesRoutes)
 app.use("/socials", socialsRoutes);
 
 

@@ -10,11 +10,11 @@ interface Sale{
   // category: String;
 }
 
-export const fetchOrderAnalytics = createAsyncThunk(
-  'sales/fetchOrderAnalytics',
+export const fetchSales = createAsyncThunk(
+  'sales/fetchSales',
   async (_, {rejectWithValue}) => {
     try {
-      const res = await fetch(`${BASEURL}/orders/`, {
+      const res = await fetch(`${BASEURL}/sales/`, {
         credentials: 'include', 
         headers: {
           'Content-Type': 'application/json',
@@ -79,6 +79,9 @@ export const fetchSalesSummary = createAsyncThunk(
       }
 
       return await res.json();
+      // totalItemsSold: 
+      // totalRevenue: 
+      //   totalOrders: 
     } catch (err: unknown) {
       if (err instanceof Error) return rejectWithValue(err.message);
       return rejectWithValue('Unknown error occurred');
