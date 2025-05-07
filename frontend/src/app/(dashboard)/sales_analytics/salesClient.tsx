@@ -33,7 +33,7 @@ function SalesClient() {
         dispatch(fetchTopProducts())
 },[])
 
-    
+    console.log(summary)
     return (
         <div className={`flex flex-col items-center p-4 min-h-screen bg-gradient-to-br from-[#f9fafb] via-[#f0f4ff] to-[#e0f7fa] ${poppins.className}`}>
             <p className='text-[24px] font-bold mb-4 text-blue-700'>📊 Sales Dashboard</p>

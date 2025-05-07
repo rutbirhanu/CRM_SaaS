@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 
-const BASEURL = "http:/localhost:3000/order"
+const BASEURL = "http:/localhost:8080/sales"
 
 interface Sale{
   itemName: string;
@@ -14,7 +14,7 @@ export const fetchSales = createAsyncThunk(
   'sales/fetchSales',
   async (_, {rejectWithValue}) => {
     try {
-      const res = await fetch(`${BASEURL}/sales/`, {
+      const res = await fetch(`${BASEURL}/`, {
         credentials: 'include', 
         headers: {
           'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ export const createSale = createAsyncThunk(
   'sales/createSale',
   async (saleData:Sale , { rejectWithValue }) => {
     try {
-      const res = await fetch(`${BASEURL}/sales/add`, {
+      const res = await fetch(`${BASEURL}/add`, {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -69,7 +69,7 @@ export const fetchSalesSummary = createAsyncThunk(
   'sales/fetchSalesSummary',
   async (_, { rejectWithValue }) => {
     try {
-      const res = await fetch(`${BASEURL}/sales/summary`, {
+      const res = await fetch(`${BASEURL}/summary`, {
         credentials: 'include',
       });
 
@@ -93,7 +93,7 @@ export const fetchMonthlySales = createAsyncThunk(
   'sales/fetchMonthlySales',
   async (_, { rejectWithValue }) => {
     try {
-      const res = await fetch(`${BASEURL}/sales/monthly`, {
+      const res = await fetch(`${BASEURL}/monthly`, {
         credentials: 'include',
       });
 
@@ -114,7 +114,7 @@ export const fetchTopProducts = createAsyncThunk(
   'sales/fetchTopProducts',
   async (_, { rejectWithValue }) => {
     try {
-      const res = await fetch(`${BASEURL}/sales/top-products`, {
+      const res = await fetch(`${BASEURL}/top-products`, {
         credentials: 'include',
       });
 
@@ -135,7 +135,7 @@ export const fetchSalesByCategory = createAsyncThunk(
   'sales/fetchSalesByCategory',
   async (_, { rejectWithValue }) => {
     try {
-      const res = await fetch(`${BASEURL}/sales/category-sales`, {
+      const res = await fetch(`${BASEURL}/category-sales`, {
         credentials: 'include',
       });
 
