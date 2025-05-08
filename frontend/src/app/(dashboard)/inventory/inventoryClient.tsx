@@ -11,16 +11,15 @@ import React from 'react'
 import { FaFilter } from "react-icons/fa";
 import { useState } from "react";
 import Image from "next/image";
-import { useAppDispatch } from '@/redux/hook'
+import { useAppDispatch, useAppSelector } from '@/redux/hook'
 
 
 function InventoryClient() {
 
   const dispatch = useAppDispatch()
-  const { items, loading, error } = useSelector(
-    (state: RootState) => state.inventory
+  const { items, loading, error } = useAppSelector(
+    (state) => state.inventory
   )
-
   useEffect(() => {
     if (items.length === 0) {
       dispatch(fetchInventory())
