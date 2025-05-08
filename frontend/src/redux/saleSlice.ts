@@ -15,7 +15,8 @@ export const fetchSales = createAsyncThunk(
   async (_, {rejectWithValue}) => {
     try {
       const res = await fetch(`${BASEURL}/`, {
-        credentials: 'include', 
+        method:"GET",
+        // credentials: 'include', 
         headers: {
           'Content-Type': 'application/json',
         },
@@ -45,7 +46,7 @@ export const createSale = createAsyncThunk(
     try {
       const res = await fetch(`${BASEURL}/add`, {
         method: 'POST',
-        credentials: 'include',
+        // credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -70,7 +71,8 @@ export const fetchSalesSummary = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const res = await fetch(`${BASEURL}/summary`, {
-        credentials: 'include',
+        method: "GET"
+        // credentials: 'include',
       });
 
       if (!res.ok) {
