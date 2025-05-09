@@ -6,6 +6,7 @@ const {generateToken, generateUrl,  getYouTubeAnalytics} = require("../Controlle
 
 router.route("/redirect").get(generateToken)
 router.route("/generate-url").get(generateUrl)
-router.route("/stat").get(getYouTubeAnalytics)
+router.route("/youtube-stat").get(getYouTubeAnalytics)
+router.route("/instagram-stat").get()
 
 module.exports = router;
