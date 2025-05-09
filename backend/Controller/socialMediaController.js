@@ -80,25 +80,33 @@ async function getYouTubeAnalytics() {
 
 async function getIGStat(req, res) {
   try {
-    const username = 'USERNAME'; 
+    const { username } = req.body
+    // const username = 'USERNAME'; 
 
-const requestUrl = `https://i.instagram.com/api/v1/users/web_profile_info/?username=${username}`;
+    const requestUrl = `https://i.instagram.com/api/v1/users/web_profile_info/?username=${username}`;
 
-const headers = {
-  'User-Agent': 'Instagram 76.0.0.15.395 Android (24/7.0; 640dpi; 1440x2560; samsung; SM-G930F; herolte; samsungexynos8890; en_US; 138226743)',
-  'Origin': 'https://www.instagram.com',
-  'Referer': 'https://www.instagram.com/',
-};
+    const headers = {
+      'User-Agent': 'Instagram 76.0.0.15.395 Android (24/7.0; 640dpi; 1440x2560; samsung; SM-G930F; herolte; samsungexynos8890; en_US; 138226743)',
+      'Origin': 'https://www.instagram.com',
+      'Referer': 'https://www.instagram.com/',
+    };
 
-axios.get(requestUrl, { headers })
-  .then((response) => {
-    const data = response.data;
-    const followerCount = data.data.user.edge_followed_by.count;
+    const response = await axios.get(requestUrl, { headers })
+    const data= response.data
+    const followerCount = data.data.user.edge_follower_by.count
     console.log('Follower count:', followerCount);
-  })
-  .catch((error) => {
-    console.error('Error fetching data:', error.message);
-  });
+
+    res.status(200).json(followerCount)
+
+    // axios.get(requestUrl, { headers })
+    //   .then((response) => {
+    //     const data = response.data;
+    //     const followerCount = data.data.user.edge_followed_by.count;
+    //     console.log('Follower count:', followerCount);
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error fetching data:', error.message);
+    //   });
 
   }
   catch (err) {
@@ -108,7 +116,7 @@ axios.get(requestUrl, { headers })
 
 
 
-  // //FACEBOOK ANALYTICS
+// //FACEBOOK ANALYTICS
 
 // const PAGE_ID = process.env.PAGE_ID;
 
