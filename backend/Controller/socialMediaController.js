@@ -146,4 +146,4 @@ async function getIGStat(req, res) {
 
 
 
-module.exports = { generateToken, generateUrl, getYouTubeAnalytics }
+module.exports = { generateToken, generateUrl, getYouTubeAnalytics, getIGStat}
