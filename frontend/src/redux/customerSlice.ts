@@ -4,9 +4,9 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 interface Customer {
   // id: number;
   name: string;
-  email: string;
+  // email: string;
   phone: string;
-  address: string;
+  // address: string;
   // loyaltyPoints: number;
   // totalSpent: number;
   // lastPurchase: string;
@@ -27,7 +27,7 @@ const initialState: CustomerState = {
 // -------------------------
 // Thunks (async actions)
 // -------------------------
-const BASEURL = "http:/localhost:8080/customer"
+const BASEURL = "http://localhost:8080/customer"
 
 
 export const fetchCustomers = createAsyncThunk(

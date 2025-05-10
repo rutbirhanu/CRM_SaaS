@@ -22,7 +22,7 @@ const initialState: InventoryState = {
   error: null,
 };
 
-const BASEURL = "http:/localhost:8080/inventory"
+const BASEURL = "http://localhost:8080/inventory"
 
 // ✅ Fetch all items (GET)
 export const fetchInventory = createAsyncThunk<Product[]>(

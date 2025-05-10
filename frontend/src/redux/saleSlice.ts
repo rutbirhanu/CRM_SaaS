@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 
-const BASEURL = "http:/localhost:8080/sales"
+const BASEURL = "http://localhost:8080/sales"
 
 interface Sale{
   itemName: string;
