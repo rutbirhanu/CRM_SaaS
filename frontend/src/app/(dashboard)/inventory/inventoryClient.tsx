@@ -21,9 +21,9 @@ function InventoryClient() {
     (state) => state.inventory
   )
   useEffect(() => {
-    if (items.length === 0) {
+    // if (items.length === 0) {
       dispatch(fetchInventory())
-    }
+    // }
   }, [dispatch, items])
 
 console.log(items)
@@ -41,7 +41,7 @@ console.log(items)
   // if (error) return <p>Error: {error}</p>
 
 
-  const productss = [
+  const item = [
     {
       id: 1,
       name: "Product Name 1",
@@ -123,13 +123,13 @@ console.log(items)
           </thead>
           <tbody>
             {items.map((product) => (
-              <React.Fragment key={product.id}>
-                <tr key={product.id} className="border-b">
+              <React.Fragment key={product._id}>
+                <tr key={product._id} className="border-b">
                   <td className="px-4 py-2">
                     <input
                       type="checkbox"
-                      onChange={() => toggleRow(product.id)}
-                      checked={expandedRows.includes(product.id)}
+                      onChange={() => toggleRow(product._id)}
+                      checked={expandedRows.includes(product._id)}
                     />
                   </td>
                   <td className="px-4 py-2">

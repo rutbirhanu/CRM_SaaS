@@ -31,7 +31,7 @@ export const fetchInventory = createAsyncThunk<Product[]>(
     try {
       const res = await fetch(`${BASEURL}/`, {
         method: 'GET',
-        credentials: 'include',
+        // credentials: 'include',
       });
 
       if (!res.ok) {
@@ -57,7 +57,7 @@ export const addToInventory = createAsyncThunk(
     try {
       const req = await fetch(`${BASEURL}/add`, {
         method: "POST",
-        credentials: 'include',
+        // credentials: 'include',
         body: JSON.stringify(itemData)
       })
 
