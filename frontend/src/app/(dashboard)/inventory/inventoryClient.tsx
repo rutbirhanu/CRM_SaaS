@@ -1,7 +1,5 @@
 'use client'
 
-import { useSelector } from 'react-redux'
-import { RootState } from '../../../redux/store'
 import { useEffect } from 'react'
 import { fetchInventory } from '../../../redux/inventorySlice'
 import InventoryWarningCard from '@/components/InventoryWarningCard'
@@ -24,7 +22,7 @@ function InventoryClient() {
     // if (items.length === 0) {
       dispatch(fetchInventory())
     // }
-  }, [dispatch, items])
+  }, [])
 
 console.log(items)
 
@@ -37,32 +35,32 @@ console.log(items)
   };
 
 
-  // if (loading) return <p>Loading...</p>
-  // if (error) return <p>Error: {error}</p>
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>Error: {error}</p>
 
 
-  const item = [
-    {
-      id: 1,
-      name: "Product Name 1",
-      quantity: 10,
-      price: 10,
-      image:
-        "https://eu.christianlouboutin.com/media/catalog/product/3/1/3180466f065-3180466f065-main_image-ecommerce-christianlouboutin-folliesstrass-3180466_f065_1_1200x1200.jpg",
-      supplier: "Luxury Suppliers Inc.",
-      tags: ["heels", "women", "glam"],
-    },
-    {
-      id: 2,
-      name: "Product Name 2",
-      quantity: 5,
-      price: 20,
-      image:
-        "https://us.christianlouboutin.com/media/catalog/product/1/2/1250521r558-1250521r558-main_image-ecommerce-christianlouboutin-sokate-1250521_r558_1_1200x1200.jpg",
-      supplier: "Elegant Shoes Co.",
-      tags: ["red", "stiletto", "exclusive"],
-    },
-  ];
+  // const item = [
+  //   {
+  //     id: 1,
+  //     name: "Product Name 1",
+  //     quantity: 10,
+  //     price: 10,
+  //     image:
+  //       "https://eu.christianlouboutin.com/media/catalog/product/3/1/3180466f065-3180466f065-main_image-ecommerce-christianlouboutin-folliesstrass-3180466_f065_1_1200x1200.jpg",
+  //     supplier: "Luxury Suppliers Inc.",
+  //     tags: ["heels", "women", "glam"],
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Product Name 2",
+  //     quantity: 5,
+  //     price: 20,
+  //     image:
+  //       "https://us.christianlouboutin.com/media/catalog/product/1/2/1250521r558-1250521r558-main_image-ecommerce-christianlouboutin-sokate-1250521_r558_1_1200x1200.jpg",
+  //     supplier: "Elegant Shoes Co.",
+  //     tags: ["red", "stiletto", "exclusive"],
+  //   },
+  // ];
 
 
   return (
@@ -142,13 +140,13 @@ console.log(items)
                     />
                   </td>
                   <td className="px-4 py-2">{product.name}</td>
-                  <td className="px-4 py-2">{product.quantity}</td>
+                  <td className="px-4 py-2">{product.stock}</td>
                   <td className="px-4 py-2">${product.price}</td>
                 </tr>
 
                 {/* Expanded Details */}
-                {expandedRows.includes(product.id) && (
-                  <tr key={`expanded-${product.id}`}>
+                {expandedRows.includes(product._id) && (
+                  <tr key={`expanded-${product._id}`}>
                     <td colSpan={5} className="px-4 py-3 bg-gray-50 rounded-b-xl">
                       <div className="flex items-start gap-6 p-4 border border-dashed rounded-xl shadow-sm">
                         <Image
@@ -161,12 +159,12 @@ console.log(items)
                         <div className="flex flex-col gap-1">
                           <h3 className="font-semibold text-lg">{product.name}</h3>
                           <p className="text-sm text-gray-600">
-                            Quantity in Stock: <strong>{product.quantity}</strong>
+                            Quantity in Stock: <strong>{product.stock}</strong>
                           </p>
-                          <p className="text-sm text-gray-600">
+                          {/* <p className="text-sm text-gray-600">
                             Supplier: <strong>{product.supplier}</strong>
-                          </p>
-                          <div className="flex flex-wrap gap-2 mt-2">
+                          </p> */}
+                          {/* <div className="flex flex-wrap gap-2 mt-2">
                             {product.tags.map((tag, index) => (
                               <span
                                 key={index}
@@ -175,7 +173,7 @@ console.log(items)
                                 #{tag}
                               </span>
                             ))}
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     </td>

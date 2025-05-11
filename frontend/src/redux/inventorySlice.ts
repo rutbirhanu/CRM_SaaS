@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 
 interface Product {
-  // id: number;
+  _id: number;
   name: string;
   stock: number;
   price: number;
