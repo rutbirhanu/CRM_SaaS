@@ -53,8 +53,8 @@ console.log(customers)
         </div>
 
         {/* Loading/Error */}
-        {/* {loading && <p className="text-center text-gray-500">Loading...</p>}
-        {error && <p className="text-center text-red-500">Error: {error}</p>} */}
+        {loading && <p className="text-center text-gray-500">Loading...</p>}
+        {error && <p className="text-center text-red-500">Error: {error}</p>}
 
         {/* Customers Table */}
         {!loading && customers.length > 0 && (
@@ -71,11 +71,11 @@ console.log(customers)
               </thead>
               <tbody>
                 {customers.map((customer) => (
-                  <tr key={customer.id} className="bg-white border-b">
+                  <tr key={customer._id} className="bg-white border-b">
                     <td className="py-2 px-4">{customer.name}</td>
-                    <td className="py-2 px-4">{customer.email}</td>
+                    <td className="py-2 px-4">{customer.email ? customer.email : "--"}</td>
                     <td className="py-2 px-4 text-blue-600">{customer.loyaltyPoints}</td>
-                    <td className="py-2 px-4">{customer.lastPurchase}</td>
+                    <td className="py-2 px-4">{customer.lastPurchase ? customer.lastPurchase : "--"}</td>
                     <td className="py-2 px-4">
                       <Button className="bg-green-600 hover:bg-green-700 text-white ml-2">Edit</Button>
                       <Button className="bg-red-600 hover:bg-red-700 text-white ml-2">Delete</Button>
