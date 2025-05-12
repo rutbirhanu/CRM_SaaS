@@ -2,13 +2,15 @@
 
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { addToInventory } from "@/redux/inventorySlice";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
   const dispatch = useAppDispatch()
+  const router = useRouter()
   const { items, loading, error } = useAppSelector(state => state.inventory)
 
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(true);
   const [itemData, setItemData] = useState({
     image: null as File | null,
     name: "",
@@ -44,19 +46,19 @@ export default function Page() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-6">
-      <button
+      {/* <button
         onClick={() => setShowModal(true)}
         className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md"
       >
         Add Item
-      </button>
+      </button> */}
 
       {/* Modal Overlay */}
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white w-full max-w-xl p-8 rounded-2xl shadow-2xl relative">
             <button
-              onClick={() => setShowModal(false)}
+              onClick={() => router.back()}
               className="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-xl"
             >
               &times;
@@ -132,6 +134,7 @@ export default function Page() {
           </div>
         </div>
       )}
+
     </div>
   );
 }
