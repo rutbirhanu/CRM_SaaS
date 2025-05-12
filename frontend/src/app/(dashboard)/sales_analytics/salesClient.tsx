@@ -24,16 +24,16 @@ const data = [
 function SalesClient() {
     const [date, setDate] = React.useState<Date | undefined>(new Date())
     const dispatch = useAppDispatch()
-    const { loading, summary , monthly , topProducts , categorySales, error} = useAppSelector( state => state.sales) 
+    const { loading, summary, monthly, orders, topProducts, categorySales, error } = useAppSelector(state => state.sales)
 
     useEffect(() => {
         dispatch(fetchSales())
         dispatch(fetchSalesSummary())
         dispatch(fetchMonthlySales())
         dispatch(fetchTopProducts())
-},[])
+    }, [])
 
-    console.log(summary)
+    console.log(orders)
     return (
         <div className={`flex flex-col items-center p-4 min-h-screen bg-gradient-to-br from-[#f9fafb] via-[#f0f4ff] to-[#e0f7fa] ${poppins.className}`}>
             <p className='text-[24px] font-bold mb-4 text-blue-700'>📊 Sales Dashboard</p>
@@ -79,14 +79,10 @@ function SalesClient() {
                         </tr>
                     </thead>
                     <tbody>
-                        {[
-                            { name: 'Carrot', qty: 2, price: 10, date: '12 Feb 2025' },
-                            { name: 'Shirt', qty: 2, price: 1023, date: '23 Mar 2025' },
-                            { name: 'Apple', qty: 1, price: 300, date: '28 Jan 2025' }
-                        ].flatMap(item => Array(6).fill(item)).map((item, idx) => (
+                        {orders.map((item, idx) => (
                             <tr key={idx} className='hover:bg-blue-50'>
-                                <td className='px-4 py-2'>{item.name}</td>
-                                <td className='px-4 py-2'>{item.qty}</td>
+                                <td className='px-4 py-2'>{item.itemName}</td>
+                                <td className='px-4 py-2'>{item.quantity}</td>
                                 <td className='px-4 py-2'>${item.price}</td>
                                 <td className='px-4 py-2'>{item.date}</td>
                             </tr>

@@ -3,31 +3,32 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const BASEURL = "http://localhost:8080/sales"
 
-interface Sale{
+interface Sale {
   itemName: string;
   quantity: number;
   price: number;
-  category: String;
+  category: string;
 }
 
 export const fetchSales = createAsyncThunk(
   'sales/fetchSales',
-  async (_, {rejectWithValue}) => {
+  async (_, { rejectWithValue }) => {
     try {
       const res = await fetch(`${BASEURL}/`, {
-        method:"GET",
+        method: "GET",
         // credentials: 'include', 
         headers: {
           'Content-Type': 'application/json',
         },
       });
-
       if (!res.ok) {
         const errorData = await res.json();
         return rejectWithValue(errorData.message || 'Failed to fetch analytics');
       }
 
       const data = await res.json();
+      console.log(data)
+
       return data;
     }
     catch (err: unknown) {
@@ -42,7 +43,7 @@ export const fetchSales = createAsyncThunk(
 
 export const createSale = createAsyncThunk(
   'sales/createSale',
-  async (saleData:Sale , { rejectWithValue }) => {
+  async (saleData: Sale, { rejectWithValue }) => {
     try {
       const res = await fetch(`${BASEURL}/add`, {
         method: 'POST',
@@ -169,7 +170,7 @@ const initialState: SalesState = {
   loading: false,
   summary: null,
   monthly: null,
-  orders:null,
+  orders: null,
   topProducts: null,
   categorySales: null,
   error: null,
