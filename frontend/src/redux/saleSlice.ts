@@ -7,7 +7,7 @@ interface Sale{
   itemName: string;
   quantity: number;
   price: number;
-  // category: String;
+  category: String;
 }
 
 export const fetchSales = createAsyncThunk(
@@ -159,6 +159,7 @@ interface SalesState {
   loading: boolean;
   summary: unknown;
   monthly: unknown;
+  orders: unknown;
   topProducts: unknown;
   categorySales: unknown;
   error: string | null;
@@ -168,6 +169,7 @@ const initialState: SalesState = {
   loading: false,
   summary: null,
   monthly: null,
+  orders:null,
   topProducts: null,
   categorySales: null,
   error: null,
@@ -179,6 +181,18 @@ const salesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      .addCase(fetchSales.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchSales.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.orders = action.payload
+      })
+      .addCase(fetchSales.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload as string;
+      })
       .addCase(fetchSalesSummary.pending, (state) => {
         state.loading = true;
       })
