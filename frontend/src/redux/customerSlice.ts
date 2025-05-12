@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 // Define the customer type
 interface Customer {
-  _id: number;
+  // _id: number;
   name: string;
   // email: string;
   phone: string;

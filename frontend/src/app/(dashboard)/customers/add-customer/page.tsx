@@ -1,14 +1,15 @@
+'use client'
 import { addCustomer } from "@/redux/customerSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
-import React, { useState } from "react";
+import { useState } from "react";
 
 function Page() {
 
   const [customerData, setCustomerData] = useState({
     name: "",
-    email: "",
+    // email: "",
     phone: "",
-    address: "",
+    // address: "",
   })
 
   const dispatch = useAppDispatch();
@@ -44,7 +45,7 @@ function Page() {
                 className="w-full py-2 px-4 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 shadow-inner"
               />
             </div>
-            <div>
+            {/* <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
               <input
                 id="email"
@@ -54,7 +55,7 @@ function Page() {
                 onChange={handleCustomerData}
                 className="w-full py-2 px-4 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 shadow-inner"
               />
-            </div>
+            </div> */}
             <div>
               <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
               <input
@@ -66,7 +67,7 @@ function Page() {
                 className="w-full py-2 px-4 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 shadow-inner"
               />
             </div>
-            <div>
+            {/* <div>
               <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-1">Address</label>
               <input
                 id="address"
@@ -76,7 +77,7 @@ function Page() {
                 onChange={handleCustomerData}
                 className="w-full py-2 px-4 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 shadow-inner"
               />
-            </div>
+            </div> */}
           </div>
 
           <div className="mt-16 flex justify-center">
