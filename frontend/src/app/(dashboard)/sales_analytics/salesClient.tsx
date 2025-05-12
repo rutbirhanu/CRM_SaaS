@@ -28,12 +28,13 @@ function SalesClient() {
 
     useEffect(() => {
         dispatch(fetchSales())
-        dispatch(fetchSalesSummary())
-        dispatch(fetchMonthlySales())
-        dispatch(fetchTopProducts())
-    }, [])
 
+    }, [])
     console.log(orders)
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error}</p>;
+
     return (
         <div className={`flex flex-col items-center p-4 min-h-screen bg-gradient-to-br from-[#f9fafb] via-[#f0f4ff] to-[#e0f7fa] ${poppins.className}`}>
             <p className='text-[24px] font-bold mb-4 text-blue-700'>📊 Sales Dashboard</p>
@@ -79,7 +80,7 @@ function SalesClient() {
                         </tr>
                     </thead>
                     <tbody>
-                        {orders.map((item, idx) => (
+                        {orders?.map((item, idx) => (
                             <tr key={idx} className='hover:bg-blue-50'>
                                 <td className='px-4 py-2'>{item.itemName}</td>
                                 <td className='px-4 py-2'>{item.quantity}</td>

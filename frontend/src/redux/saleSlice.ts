@@ -16,7 +16,6 @@ export const fetchSales = createAsyncThunk(
     try {
       const res = await fetch(`${BASEURL}/`, {
         method: "GET",
-        // credentials: 'include', 
         headers: {
           'Content-Type': 'application/json',
         },
@@ -27,7 +26,7 @@ export const fetchSales = createAsyncThunk(
       }
 
       const data = await res.json();
-      console.log(data)
+      // console.log(data)
 
       return data;
     }
@@ -187,8 +186,8 @@ const salesSlice = createSlice({
       })
       .addCase(fetchSales.fulfilled, (state, action) => {
         state.loading = false;
+        state.orders = action.payload;
         state.error = null;
-        state.orders = action.payload
       })
       .addCase(fetchSales.rejected, (state, action) => {
         state.loading = false;

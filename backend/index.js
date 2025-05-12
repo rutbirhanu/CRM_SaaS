@@ -11,13 +11,16 @@ const socialsRoutes = require("./Route/socialMediaRoute")
 
 const app = express()
 
-app.use(cors()); 
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true
+}));
 app.use(express.json()); 
 
 app.use("/customer", customerRoutes);
 app.use("/inventory", inventoryRoutes);
 app.use("/admin", adminRoutes);
-app.use("/sales", salesRoutes)
+app.use("/sales", salesRoutes);
 app.use("/socials", socialsRoutes);
 
 
