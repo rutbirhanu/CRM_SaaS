@@ -137,6 +137,7 @@ export default function Page() {
               <div className="flex justify-center mt-10">
                 <button
                   type="submit"
+                   onClick={() => router.back()}
                   className="w-1/3 py-1 rounded-lg bg-blue-900 hover:bg-black text-white font-medium"
                 >
                   Save Item

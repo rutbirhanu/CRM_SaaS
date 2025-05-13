@@ -9,12 +9,12 @@ const streamifier = require('streamifier');
 //         if (error) return reject(error);
 //         resolve(result);
 //       });
-  
+
 //       stream.end(fileBuffer); // this pushes the buffer to the stream
 //     });
 //   };
 
-  
+
 
 const uploadToCloudinary = (buffer) => {
     return new Promise((resolve, reject) => {
@@ -48,6 +48,7 @@ exports.addProduct = async (req, res) => {
             product: newProduct,
         });
     } catch (error) {
+        console.log(error)
         res.status(500).json({ error: error.message });
     }
 };
@@ -95,7 +96,7 @@ exports.deleteProduct = async (req, res) => {
         // if (product.imagePublicId) {
         //     await cloudinary.uploader.destroy(product.imagePublicId);
         //   }
-      
+
         const deletedProduct = await Inventory.findByIdAndDelete(req.params.id);
         if (!deletedProduct) {
             return res.status(404).json({ message: "Product not found" });

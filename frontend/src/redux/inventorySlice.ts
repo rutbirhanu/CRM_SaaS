@@ -57,10 +57,10 @@ export const addToInventory = createAsyncThunk(
     try {
       const formData = new FormData();
       formData.append('image', itemData.image!);
-      formData.append('itemName', itemData.name);
-      formData.append('quantity', itemData.stock);
+      formData.append('name', itemData.name);
+      formData.append('stock', itemData.stock);
       formData.append('price', itemData.price);
-      formData.append('price', itemData.category);
+      formData.append('category', itemData.category);
 
       const req = await fetch(`${BASEURL}/add`, {
         method: "POST",
