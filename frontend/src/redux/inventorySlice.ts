@@ -1,12 +1,12 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 
 interface Product {
-  _id: number;
-  name: string;
-  stock: number;
+  // _id: number;
+  itemName: string;
+  quantity: number;
   price: number;
-  category:string
-  image: string;
+  // category:string
+  image: File | null;
   // tags: string[];
 }
 
