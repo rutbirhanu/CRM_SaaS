@@ -55,10 +55,16 @@ export const addToInventory = createAsyncThunk(
   "inventory/addToInventory",
   async (itemData: Product, { rejectWithValue }) => {
     try {
+      const formData = new FormData();
+      formData.append('image', itemData.image!);
+      formData.append('itemName', itemData.itemName);
+      formData.append('quantity', itemData.quantity.toString());
+      formData.append('price', itemData.price.toString());
+
       const req = await fetch(`${BASEURL}/add`, {
         method: "POST",
         // credentials: 'include',
-        body: JSON.stringify(itemData)
+        body: formData
       })
 
       if (!req.ok) {
@@ -189,7 +195,7 @@ const inventorySlice = createSlice({
         state.loading = false;
         state.error = action.payload as string;
       })
-      
+
       // add item
       .addCase(addToInventory.fulfilled, (state, action: PayloadAction<Product>) => {
         state.items.push(action.payload);
