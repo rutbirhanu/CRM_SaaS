@@ -13,9 +13,10 @@ export default function Page() {
   const [showModal, setShowModal] = useState(true);
   const [itemData, setItemData] = useState({
     image: null as File | null,
-    itemName: "",
-    quantity: 0,
-    price: 0,
+    name: "",
+    stock: "",
+    price: "",
+    category:""
   });
 
   const handleSetItemData = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -80,7 +81,7 @@ export default function Page() {
                    file:text-gray-700
                      file:shadow-[2px_2px_8px_#d1d9e6,inset_-2px_-2px_8px_#ffffff]
                      cursor-pointer
-                     text-gray-600 py-[5px] px-2 border rounded-lg w-full  bg-gray-50 focus:ring-2 focus:ring-gray-200 text-[14px]"
+                     text-gray-600 py-[4px] px-2 border rounded-lg w-full  bg-gray-50 focus:ring-2 focus:ring-gray-200 text-[14px]"
                   />
                 </div>
 
@@ -91,8 +92,8 @@ export default function Page() {
                 <label className="block text-sm font-medium mb-1">Item Name</label>
                 <input
                   type="text"
-                  name="itemName"
-                  value={itemData.itemName}
+                  name="name"
+                  value={itemData.name}
                   onChange={handleSetItemData}
                   className="w-full py-2 px-4 border rounded-lg bg-gray-50 focus:ring-2 focus:ring-gray-200"
                 />
@@ -100,13 +101,13 @@ export default function Page() {
 
               {/* Quantity */}
               <div>
-                <label className="block text-sm font-medium mb-1">Quantity</label>
+                <label className="block text-sm font-medium mb-[2px]">Stock</label>
                 <input
-                  type="number"
-                  name="quantity"
-                  value={itemData.quantity}
+                  type="text"
+                  name="stock"
+                  value={itemData.stock}
                   onChange={handleSetItemData}
-                  className="w-full py-2 px-4 border rounded-lg bg-gray-50 focus:ring-2 focus:ring-gray-200"
+                  className="w-full py-1 px-4 border rounded-lg bg-gray-50 focus:ring-2 focus:ring-gray-200"
                 />
               </div>
 
@@ -114,18 +115,29 @@ export default function Page() {
               <div>
                 <label className="block text-sm font-medium mb-1">Price</label>
                 <input
-                  type="number"
+                  type="text"
                   name="price"
                   value={itemData.price}
                   onChange={handleSetItemData}
-                  className="w-full py-2 px-4 border rounded-lg bg-gray-50 focus:ring-2 focus:ring-gray-200"
+                  className="w-full py-1 px-4 border rounded-lg bg-gray-50 focus:ring-2 focus:ring-gray-200"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium mb-1">Category</label>
+                <input
+                  type="text"
+                  name="category"
+                  value={itemData.category}
+                  onChange={handleSetItemData}
+                  className="w-full py-1 px-4 border rounded-lg bg-gray-50 focus:ring-2 focus:ring-gray-200"
                 />
               </div>
 
               <div className="flex justify-center mt-10">
                 <button
                   type="submit"
-                  className="w-1/3 py-2 rounded-lg bg-blue-900 hover:bg-black text-white font-medium"
+                  className="w-1/3 py-1 rounded-lg bg-blue-900 hover:bg-black text-white font-medium"
                 >
                   Save Item
                 </button>

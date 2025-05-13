@@ -2,10 +2,10 @@ import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 
 interface Product {
   // _id: number;
-  itemName: string;
-  quantity: number;
-  price: number;
-  // category:string
+  name: string;
+  stock: string;
+  price: string;
+  category:string
   image: File | null;
   // tags: string[];
 }
@@ -57,9 +57,10 @@ export const addToInventory = createAsyncThunk(
     try {
       const formData = new FormData();
       formData.append('image', itemData.image!);
-      formData.append('itemName', itemData.itemName);
-      formData.append('quantity', itemData.quantity.toString());
-      formData.append('price', itemData.price.toString());
+      formData.append('itemName', itemData.name);
+      formData.append('quantity', itemData.stock);
+      formData.append('price', itemData.price);
+      formData.append('price', itemData.category);
 
       const req = await fetch(`${BASEURL}/add`, {
         method: "POST",
