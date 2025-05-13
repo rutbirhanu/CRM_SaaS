@@ -20,11 +20,11 @@ function InventoryClient() {
   )
   useEffect(() => {
     // if (items.length === 0) {
-      dispatch(fetchInventory())
+    dispatch(fetchInventory())
     // }
   }, [])
 
-console.log(items)
+  console.log(items)
 
   const [expandedRows, setExpandedRows] = useState<number[]>([]);
 
@@ -174,6 +174,10 @@ console.log(items)
                               </span>
                             ))}
                           </div> */}
+                        </div>
+                        <div className="py-2 px-4 ">
+                            <Button className="bg-green-600 hover:bg-green-700 text-white ml-2">Edit</Button>
+                            <Button className="bg-red-600 hover:bg-red-700 text-white ml-2">Delete</Button>
                         </div>
                       </div>
                     </td>
