@@ -11,15 +11,15 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianG
 
 const poppins = Poppins({ weight: "400" })
 
-const data = [
-    { name: 'Jan', sales: 300 },
-    { name: 'Feb', sales: 500 },
-    { name: 'Mar', sales: 700 },
-    { name: 'Apr', sales: 600 },
-    { name: 'May', sales: 800 },
-    { name: 'Jun', sales: 400 },
-    { name: 'Jul', sales: 1000 },
-];
+// const data = [
+//     { name: 'Jan', sales: 300 },
+//     { name: 'Feb', sales: 500 },
+//     { name: 'Mar', sales: 700 },
+//     { name: 'Apr', sales: 600 },
+//     { name: 'May', sales: 800 },
+//     { name: 'Jun', sales: 400 },
+//     { name: 'Jul', sales: 1000 },
+// ];
 
 function SalesClient() {
     const [date, setDate] = React.useState<Date | undefined>(new Date())
@@ -28,9 +28,11 @@ function SalesClient() {
 
     useEffect(() => {
         dispatch(fetchSales())
+        dispatch(fetchMonthlySales())
 
     }, [])
     console.log(orders)
+    console.log(monthly)
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error}</p>;
@@ -50,7 +52,7 @@ function SalesClient() {
                 <div className='w-full lg:w-[60%] bg-white p-4 rounded-xl shadow-md'>
                     <p className='text-lg font-semibold mb-2 text-purple-700'>Monthly Sales Overview</p>
                     <ResponsiveContainer width='100%' height={220}>
-                        <LineChart data={data}>
+                        <LineChart data={monthly}>
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="name" />
                             <YAxis />

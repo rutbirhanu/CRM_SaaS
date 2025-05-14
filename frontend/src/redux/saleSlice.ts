@@ -96,7 +96,10 @@ export const fetchMonthlySales = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const res = await fetch(`${BASEURL}/monthly`, {
-        credentials: 'include',
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
       });
 
       if (!res.ok) {
