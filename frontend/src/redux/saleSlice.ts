@@ -161,7 +161,7 @@ export const fetchSalesByCategory = createAsyncThunk(
 interface SalesState {
   loading: boolean;
   summary: unknown;
-  monthly: unknown;
+  monthly: Array<string>;
   orders: unknown;
   topProducts: unknown;
   categorySales: unknown;
@@ -171,7 +171,7 @@ interface SalesState {
 const initialState: SalesState = {
   loading: false,
   summary: null,
-  monthly: null,
+  monthly: [],
   orders: null,
   topProducts: null,
   categorySales: null,
