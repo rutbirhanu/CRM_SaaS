@@ -29,10 +29,15 @@ function SalesClient() {
     useEffect(() => {
         dispatch(fetchSales())
         dispatch(fetchMonthlySales())
+        dispatch(fetchSalesSummary())
 
     }, [])
     console.log(orders)
     console.log(monthly)
+    // console.log(summary)
+    //  totalItemsSold: 
+    //   totalRevenue: 
+    //     totalOrders: 
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error}</p>;
