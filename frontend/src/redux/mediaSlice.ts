@@ -3,6 +3,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
 const BASEURL = "http://localhost:8080/socials"
 
+
+// pass the name of the 
 export const fetchIGFollower = createAsyncThunk(
     "media/fetchIGFollower",
     async (_, { rejectWithValue }) => {
