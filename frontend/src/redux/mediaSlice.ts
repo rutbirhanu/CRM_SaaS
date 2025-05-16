@@ -4,7 +4,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 const BASEURL = "http://localhost:8080/socials"
 
 
-// pass the name of the 
+// pass the name of the if owner 
 export const fetchIGFollower = createAsyncThunk(
     "media/fetchIGFollower",
     async (_, { rejectWithValue }) => {
