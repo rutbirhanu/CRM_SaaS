@@ -33,12 +33,34 @@ export const fetchIGFollower = createAsyncThunk(
 )
 
 interface mediaState {
-    IGFollower : number,
+    IGFollower: number,
     loading: boolean,
-    error:boolean
+    error: string | null;
 }
-const initialState:mediaState  = {
-    IGFollower : 0,
+const initialState: mediaState = {
+    IGFollower: 0,
     loading: false,
-    error:false
+    error: null
 }
+
+const mediaSlice = createSlice({
+    name: "media",
+    initialState,
+    reducers: {},
+    extraReducers: (builder) => {
+        builder.
+            addCase(fetchIGFollower.pending, (state) => {
+                state.loading = true
+            })
+            .addCase(fetchIGFollower.fulfilled, (state, action) => {
+                state.loading = false
+                state.IGFollower = action.payload
+            })
+            .addCase(fetchIGFollower.rejected, (state, action) => {
+            state.error = action.payload as string
+        })
+
+    }
+})
+
+export default mediaSlice.reducer
