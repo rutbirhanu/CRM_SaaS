@@ -6,7 +6,7 @@ import SearchComponent from "@/components/SearchComponent";
 import MainMenuComponents from "@/components/MainMenuComponents";
 import { FaStore } from "react-icons/fa";
 import { FcSalesPerformance } from "react-icons/fc";
-import { IoPeopleSharp } from "react-icons/io5";
+import { IoPeopleSharp, IoSettingsOutline } from "react-icons/io5";
 import { SiGoogleanalytics } from "react-icons/si";
 import { TbReportAnalytics } from "react-icons/tb";
 
@@ -52,6 +52,9 @@ export default function Layout({
                 <MainMenuComponents menuName="Sales Analytics" icon={<FcSalesPerformance />} itemroute="sales_analytics" />
                 <MainMenuComponents menuName="Social Media" icon={<SiGoogleanalytics />} itemroute="social_medias" />
                 <MainMenuComponents menuName="Loyality Program" icon={<TbReportAnalytics />} itemroute="loyality_program" />
+              </div>
+              <div className="flex items-end">
+                <MainMenuComponents menuName="My Account" icon={<IoSettingsOutline/>} itemroute="account_setting"/>
               </div>
 
             </div>
