@@ -43,7 +43,7 @@ export default function Layout({
       >
         <div className="bg-gray-950 h-dvh w-full text-white ">
           <div className="flex ">
-            <div className="w-[14vw] my-7 mx-5 break-words flext flex-col items-start">
+            <div className="w-[14vw] mt-7 mb-5 mx-5 break-words flex flex-col items-start justify-between">
               <div className="">
                 <div className={`text-[27px] mb-8 font-bold ${poppins.className}`}>Dashboard</div>
                 <SearchComponent />
